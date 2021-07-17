@@ -6,7 +6,6 @@ import {
     Row,
     Container,
     Form,
-    Label,
     Input,
     Button,
     FormGroup,
@@ -55,8 +54,8 @@ const Register = (props) => {
                         </FormGroup>
                         <Button className='registerButton' type='submit'>REGISTER</Button>
                         <div>
-                        <p>Already have an account? <Link className='authLink' to='#' onClick={(e) => props.handleChange(e, 0)}>Sign In</Link></p>
-                    </div>
+                            <p>Already have an account? <Link className='authLink' to='#' onClick={(e) => props.handleChange(e, 0)}>Sign In</Link></p>
+                        </div>
                     </Form>
                 </Col>
             </Row>

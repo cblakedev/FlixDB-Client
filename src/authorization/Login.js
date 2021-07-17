@@ -6,13 +6,11 @@ import {
     Row,
     Container,
     Form,
-    Label,
     Input,
     Button,
     FormGroup,
 } from 'reactstrap';
-import Register from './Register';
-import { Route, Link, Switch } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 
