@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './authorization/Login'
-import Register from './authorization/Register';
+import Auth from './authorization/Auth';
 import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
+import AuthorizationTabs from './authorization/Auth';
 
 
 function App() {
@@ -21,11 +21,8 @@ function App() {
     console.log('Successfully logged out!')
   }
 
-  const updateToken = (newToken) => {
-    localStorage.setItem('token', newToken);
-    setSessionToken(newToken);
-    console.log(sessionToken);
-  }
+  //put this function in login file
+  
 
   // const protectedViews = () => {
   //   return (
@@ -37,7 +34,7 @@ function App() {
     <div className="App">
       <div>
         <Router>
-          <Login updatetoken={updateToken}/>
+          <AuthorizationTabs />
         </Router>
       </div>
     </div>

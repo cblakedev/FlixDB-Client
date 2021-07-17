@@ -28,16 +28,109 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* AUTH STYLES */
+#mainAuthWrapper {
+  background-image: linear-gradient(to bottom right, #000000e1, #11b6c2ea), url('https://karmanhealth-karmanhealthcare.netdna-ssl.com/wp-content/uploads/2017/12/902.jpg');
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
-/* .mainDiv {
-  width: 100% !important;
-  height: 100vh !important;
-} */
+#authWrapper {
+  position: relative;
+  top: 10%;
+  width: 350px;
+  margin: auto;
+  box-shadow: 0 0 10px grey;
+  background-color: white;
+}
+
+.authTabs {
+  background-color: #393E46;
+}
+
+.loginTab {
+  width: 50%;
+
+}
+
+.signupTab {
+  width: 50%;
+}
+
+.PrivateTabIndicator-colorSecondary-3 {
+  background-color: #00FFF5 !important;
+}
+
+.MuiPaper-elevation4 {
+  box-shadow: none !important;
+}
+
+.authLink {
+  text-decoration: none;
+  color: #00ADB5;
+}
+
+.authLink:hover {
+  color: #00FFF5;
+}
+
+/* Login Styles */
+#loginWrapper {
+  padding: 20px 15px 30px 15px;
+}
+
+#username {
+  width: 75%;
+  padding: 3px 0;
+}
+
+#password{
+  width: 75%;
+  padding: 3px 0;
+}
+
+.userFormGroup {
+  padding-bottom: 10px;
+}
+
+.passFormGroup {
+  padding-bottom: 20px;
+}
+
+.loginButton {
+  padding: 3px 15px;
+  width: 50%;
+  background-color: #00ADB5;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.loginButton:hover {
+  background-image: linear-gradient(to bottom, #46464683, #11b6c2);
+  box-shadow: 0 0 5px grey;
+  cursor: pointer;
+}
+
+/* Register Styles */
+#registerWrapper {
+  padding: 20px 15px 30px 15px;
+}
+
+.registerButton {
+  width: 50%;
+  padding: 3px 12px;
+  background-color: #00ADB5;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.registerButton:hover {
+  background-image: linear-gradient(to bottom, #46464683, #11b6c2);
+  box-shadow: 0 0 5px grey;
+  cursor: pointer;
+}

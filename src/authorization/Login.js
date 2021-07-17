@@ -19,7 +19,6 @@ import { Route, Link, Switch } from 'react-router-dom';
 const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    let updatetoken = (props.updatetoken)
 
     const submitLogin = (e) => {
         e.preventDefault();
@@ -38,37 +37,30 @@ const Login = (props) => {
         }).then((response) => response.json()
         ).then((data) => {
             console.log(data)
-            updatetoken(data)
+            props.updatetoken(data)////update props
         })
     }
 
     return (
         <Container className='mainDiv'>
-            <Row>
+            <Row id='loginWrapper'>
                 <Col>
-                    <h1>Welcome, please sign in.</h1>
+                    <h1>Sign In</h1>
                     <Form onSubmit={submitLogin}>
-                        <FormGroup>
-                            <Label htmlFor='username'>Username</Label>
-                            <Input name='username' onChange={(e) => setUsername(e.target.value)} value={username} />
+                        <FormGroup className='userFormGroup'>
+                            
+                            <Input name='username' placeholder='Username' id='username' onChange={(e) => setUsername(e.target.value)} value={username} />
                         </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor='password'>Password</Label>
-                            <Input name='password' onChange={(e) => setPassword(e.target.value)} value={password} />
+                        <FormGroup className='passFormGroup'>
+                            
+                            <Input name='password' type='password' placeholder='Password' id='password' onChange={(e) => setPassword(e.target.value)} value={password} />
                         </FormGroup>
-                        <Button type='submit'>Login</Button>
+                        <Button className='loginButton' type='submit'>LOGIN</Button>
                     </Form>
                     <div>
-                        <p>Don't have an account? Click<Link to='/register'>here</Link>to register</p>
+                        <p>Don't have an account? <Link className='authLink' to='#' onClick={(e) => props.handleChange(e, 1)}>Register</Link></p>
                     </div>
                 </Col>
-                <div className='router'>
-                    <Switch>
-                        <Route exact path='/register'><Register /></Route>
-                    </Switch>
-                </div>
-
-
             </Row>
         </Container>
     )

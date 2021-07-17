@@ -12,8 +12,7 @@ import {
     FormGroup,
 } from 'reactstrap';
 import '../App.css';
-import Login from '../authorization/Login';
-
+import {Link} from 'react-router-dom';
 
 
 const Register = (props) => {
@@ -44,19 +43,20 @@ const Register = (props) => {
 
     return (
         <Container className='mainDiv'>
-            <Row>
+            <Row id='registerWrapper'>
                 <Col>
-                    <h1>Hello, register below</h1>
+                    <h1>Sign Up</h1>
                     <Form onSubmit={submitRegister}>
-                        <FormGroup>
-                            <Label htmlFor='username'>Username</Label>
-                            <Input name='username' onChange={(e) => setUsername(e.target.value)} value={username} />
+                        <FormGroup className='userFormGroup'>
+                            <Input name='username' placeholder='Username' id='username' onChange={(e) => setUsername(e.target.value)} value={username} />
                         </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor='password'>Password</Label>
-                            <Input name='password' onChange={(e) => setPassword(e.target.value)} value={password} />
+                        <FormGroup className='passFormGroup'>
+                            <Input name='password' type='password' placeholder='Password' id='password' onChange={(e) => setPassword(e.target.value)} value={password} />
                         </FormGroup>
-                        <Button type='submit'>Register</Button>
+                        <Button className='registerButton' type='submit'>REGISTER</Button>
+                        <div>
+                        <p>Already have an account? <Link className='authLink' to='#' onClick={(e) => props.handleChange(e, 0)}>Sign In</Link></p>
+                    </div>
                     </Form>
                 </Col>
             </Row>
