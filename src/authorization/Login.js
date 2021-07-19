@@ -10,7 +10,7 @@ import {
     Button,
     FormGroup,
 } from 'reactstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -35,9 +35,11 @@ const Login = (props) => {
         }).then((response) => response.json()
         ).then((data) => {
             console.log(data)
-            props.updatetoken(data)////update props
+            props.updatetoken(data)
         })
     }
+
+
 
     return (
         <Container className='mainDiv'>
@@ -46,11 +48,9 @@ const Login = (props) => {
                     <h1>Sign In</h1>
                     <Form onSubmit={submitLogin}>
                         <FormGroup className='userFormGroup'>
-                            
                             <Input name='username' placeholder='Username' id='username' onChange={(e) => setUsername(e.target.value)} value={username} />
                         </FormGroup>
                         <FormGroup className='passFormGroup'>
-                            
                             <Input name='password' type='password' placeholder='Password' id='password' onChange={(e) => setPassword(e.target.value)} value={password} />
                         </FormGroup>
                         <Button className='loginButton' type='submit'>LOGIN</Button>

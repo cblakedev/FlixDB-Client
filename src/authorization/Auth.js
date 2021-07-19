@@ -26,8 +26,8 @@ const AuthorizationTabs = () => {
         setValue(newValue);
     };
 
-    return (
-        <div id='mainAuthWrapper'>
+    return (        
+        <div id='mainAuthWrapper'> 
             <div id='authWrapper'>
                 <AppBar position="static">
                     <Tabs className='authTabs' value={value} onChange={handleChange}>
@@ -43,7 +43,6 @@ const AuthorizationTabs = () => {
                 </TabPanel>
             </div>
         </div>
-
     );
 }
 
