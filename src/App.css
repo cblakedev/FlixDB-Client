@@ -74,7 +74,7 @@
 }
 
 .authLink:hover {
-  color: #00FFF5;
+  color: #393E46;
 }
 
 /* Login Styles */
@@ -83,30 +83,21 @@
 }
 
 #username {
-  width: 75%;
-  padding: 3px 0;
+  padding: 5px 0;
 }
 
 #password{
-  width: 75%;
-  padding: 3px 0;
-}
-
-.userFormGroup {
-  padding-bottom: 10px;
-}
-
-.passFormGroup {
-  padding-bottom: 20px;
+  padding: 5px 0;
 }
 
 .loginButton {
-  padding: 3px 15px;
-  width: 50%;
-  background-color: #00ADB5;
+  margin-top: 25px !important;
+  padding: 3px 15px !important;
+  width: 50% !important;
+  background-color: #00ADB5 !important;
   border-style: none;
   border-radius: 5px;
-  color: white;
+  color: white !important;
 }
 
 .loginButton:hover {
@@ -121,12 +112,13 @@
 }
 
 .registerButton {
-  width: 50%;
-  padding: 3px 12px;
-  background-color: #00ADB5;
+  margin-top: 25px !important;
+  padding: 3px 15px !important;
+  width: 50% !important;
+  background-color: #00ADB5 !important;
   border-style: none;
   border-radius: 5px;
-  color: white;
+  color: white !important;
 }
 
 .registerButton:hover {
@@ -135,10 +127,6 @@
   cursor: pointer;
 }
 
-.hide{
-  display: none;
-}
-
-.show{
-  display: inline;
+label + .MuiInput-formControl {
+  margin-top: 20px !important;
 }
