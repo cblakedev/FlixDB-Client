@@ -16,26 +16,26 @@ const AuthorizationTabs = () => {
     const [value, setValue] = useState(0);
     const [sessionToken, setSessionToken] = useState('');
 
-    const updateToken = (newToken) => {
+    const updateToken = (newToken) => { //updates a user token and saves it in local stoage
         localStorage.setItem('token', newToken);
         setSessionToken(newToken);
         console.log(sessionToken);
     }
 
-    const handleChange = (e, newValue) => {
+    const handleChange = (e, newValue) => { //handles the change between tabs by setting a new value to a tab
         setValue(newValue);
     };
 
     return (        
         <div id='mainAuthWrapper'> 
             <div id='authWrapper'>
-                <AppBar position="static">
+                <AppBar position="static"> {/* the bar that controls the tabs at the top of the container */}
                     <Tabs className='authTabs' value={value} onChange={handleChange}>
                         <Tab className='loginTab' label="Login" />
                         <Tab className='signupTab' label="Register" />
                     </Tabs>
                 </AppBar>
-                <TabPanel value={value} index={0}>
+                <TabPanel value={value} index={0}> {/* each TabPanel displays the corresponding child components(Login, Register) */}
                     <Login updatetoken={updateToken} handleChange={handleChange} />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
@@ -46,12 +46,12 @@ const AuthorizationTabs = () => {
     );
 }
 
-function TabPanel(props) {
+function TabPanel(props) { //functional component that assists with the set up of the tab schema
     const { children, value, index } = props;
 
     return (
         <div role="tabpanel">
-            {value === index && (
+            {value === index && ( //for each TabPanel, only display the children element when value and index are equal.
                 <Box>
                     <div>{children}</div>
                 </Box>
@@ -60,7 +60,7 @@ function TabPanel(props) {
     );
 }
 
-TabPanel.propTypes = {
+TabPanel.propTypes = { //allows the definition of props being used within the TabPanel functional component.
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
