@@ -3,7 +3,7 @@ import './App.css';
 import Auth from './authorization/Auth';
 import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
-import AuthorizationTabs from './authorization/Auth';
+import SideBar from './home/SideBar'
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
     <div className="App">
       <div>
         <Router>
-          <AuthorizationTabs />
+          <SideBar />
         </Router>
       </div>
     </div>
