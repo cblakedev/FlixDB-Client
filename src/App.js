@@ -37,7 +37,6 @@ function App() {
         <Router>
           <SideBar />
         </Router>
-
       </div>
     </div>
   )
