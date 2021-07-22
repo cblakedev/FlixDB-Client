@@ -130,3 +130,77 @@
 label + .MuiInput-formControl {
   margin-top: 20px !important;
 }
+
+/* SideBar */
+#mainWrapper {
+  margin: 0;
+  width: 100%;
+}
+.headerBar {
+  height: 5vh;
+  position: fixed;
+  width: 100%;
+  margin: 0 !important;
+  background-color: #393E46;
+  color: white;
+}
+.sidebarContent {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 25% !important;
+  height: 100vh;
+  padding-top: 5% !important;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  background-color: #393E46;
+  color: white;
+
+}
+
+.userInfo {
+  height: 30% !important;
+  flex: none !important;
+  padding: 0 !important;
+}
+
+.userOperations {
+  height: 70% !important;
+  flex: none !important;
+  padding: 0 !important;
+}
+
+.operationsList li {
+ padding: 10px 5px;
+ list-style: none;
+}
+
+.operationsList {
+  padding-left: 35%;
+  margin: 0;
+  text-align: left;
+}
+
+.operationsList a{
+  text-decoration: none;
+  color: white;
+ }
+
+ .sidebarRoute {
+  flex: 1 !important;
+  background-color: #222831;
+  color: white;
+  padding-top: 5% !important;
+}
+ /* Main Home */
+ #homeWrapper {
+  height: 100%;
+  
+}
+
+.searchField {
+  display: flex;
+  flex-direction: column;
+}
+

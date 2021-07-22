@@ -23,20 +23,23 @@ const SearchBar = () => {
     }
 
     return (
-        <Container id='mainWrapper'>
-            <Row>
+        <Container id='homeWrapper'>
+            <Row className='searchField'>
                 <Col>
                     <form>
                         <TextField id="standard-search" label="Search field" type="search" onChange={(e) => setValue(e.target.value)} />
                     </form>
+                    <div>
+                        <p>Start your search here!</p>
+                    </div>
                 </Col>
+                
             </Row>
             <Row>
                 <Col>
                     {/* put all movie data here */}
                 </Col>
             </Row>
-
         </Container>
 
 

@@ -6,6 +6,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import SideBar from './home/SideBar'
 
 
+
 function App() {
   const [sessionToken, setSessionToken] = useState('');
 
@@ -36,6 +37,7 @@ function App() {
         <Router>
           <SideBar />
         </Router>
+
       </div>
     </div>
   )
