@@ -28,6 +28,7 @@ const SearchBar = () => {
                 <Col>
                     <form>
                         <TextField id="standard-search" label="Search field" type="search" onChange={(e) => setValue(e.target.value)} />
+                        <button></button>
                     </form>
                     <div>
                         <p>Start your search here!</p>
