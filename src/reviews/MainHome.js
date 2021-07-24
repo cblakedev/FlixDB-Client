@@ -1,65 +1,71 @@
 import React, {
     useState,
+    useEffect
 } from 'react';
 import {
     Row,
     Col,
     Container
 } from 'reactstrap'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 
 
 const SearchBar = () => {
     const [value, setValue] = useState('');
     const [search, setSearch] = useState({});
-    const dataResults = search.results
+    const [pageNumber, setPageNumber] = useState(1);
+    let dataResults = search.results
 
-    const fetchMovies = async (e) => {
-        e.preventDefault()
-
-        await fetch(`https://api.themoviedb.org/3/search/movie?api_key=29b70d95a85cb998fa335f41be3c2bc0&language=en-US&query=${value}&page=1&include_adult=false`)
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${window.env.API_KEY}&language=en-US&page=${pageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => setSearch(data))
+    }, [pageNumber])
+
+    const fetchMovies = (e) => {
+        e.preventDefault()
+
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${window.env.API_KEY}&language=en-US&query=${value}&page=${pageNumber}&include_adult=false`)
+            .then((res) => res.json())
+            .then((data) => {
+                setSearch(data)
+                console.log(search.page)
+            })
     }
 
-    console.log(search.results)
 
     return (
         <Container id='homeWrapper'>
-            <Row className='searchField'>
-                <Col>
+            <Row className='searchField g-0'>
+                <Col className='searchCol'>
                     <Form onSubmit={fetchMovies}>
-                        <FormGroup>
-                            <input id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
+                        <FormGroup className='searchGroup'>
+                            <Input id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
+                            <Button type='submit'>Search</Button>
                         </FormGroup>
-                        <button type='submit' >Submit</button>
                     </Form>
                 </Col>
-
             </Row>
-            <Row>
-
-                {dataResults != undefined ? dataResults.map(result => {
+            <Row className='resultsWrapper g-0'>
+                {dataResults !== undefined ? dataResults.map(result => {
                     return (
-                        <Col>
-                            <h3>{result.title}</h3>
-                            <img src={`https://image.tmdb.org/t/p/w185${result.poster_path}`} alt='No poster available'/>
-                            <p>{result.overview}</p>
+                        <Col className='resultsCol'>
+                            {result.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
+                                <h2 className='altBackground'>No poster available</h2>}
+                            <h5>{result.title}</h5>
+                            <Button>Review Me</Button>
                         </Col>
                     )
                 })
-                    : <p>Search for a movie!</p>
+                    :
+                    <Col className='noResultsCol'>
+                        <h1>Search for an available movie!</h1>
+                    </Col>
                 }
-
             </Row>
         </Container>
-
-
-
-
-
-
     )
 }
 
 export default SearchBar
+

@@ -19,12 +19,12 @@ const SideBar = (props) => {
 
     return (
         <div id='mainWrapper'>
-            <Row className='headerBar'>
+            <Row className='headerBar g-0'>
                 <Col>
                     Movie Reviews
                 </Col>
             </Row>
-            <Row className='sidebarWrapper'>
+            <Row className='sidebarWrapper g-0'>
                 <div className='sidebarContent'>
                     <Col className='userInfo'>
                         <div>User Image</div>
