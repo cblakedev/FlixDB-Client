@@ -41,7 +41,7 @@ const SideBar = (props) => {
                 </div>
                 <div className='sidebarRoute'>
                     <Switch>
-                        <Route exact path='/'><MainHome></MainHome></Route>
+                        <Route exact path='/'><MainHome /></Route>
                         <Route exact path='/myreviews'>My Reviews</Route>
                         <Route exact path='/alluserreviews'>All User Reviews</Route>
                         <Route exact path='/watchlist'>Watch List</Route>
