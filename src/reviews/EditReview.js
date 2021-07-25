@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalHeader} from 'reactstrap';
 
 const EditReview = (props) => {
     const [editReview, setEditReview] = useState(props.review.review);
@@ -18,6 +19,20 @@ const EditReview = (props) => {
         })
     }
 
+    return(
+        <Modal isOpen={true}>
+            <ModalHeader>Update Review</ModalHeader>
+            <ModalBody>
+                <Form onSubmit={reviewUpdate}>
+                    <FormGroup>
+                        <Label htmlFor='review'>Edit Review:</Label>
+                        <Input name='review' value={editReview} onChange={(e) => setEditReview(e.target.value)}/>
+                    </FormGroup>
+                    <Button type="submit">Update Review</Button>
+                </Form>
+            </ModalBody>
+        </Modal>
+    )
 
 }
 
