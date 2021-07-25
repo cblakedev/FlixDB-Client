@@ -41,7 +41,7 @@ const CreateReview = (props) => {
 
     const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3000/review/create', {
+    fetch('https://cb-movie-reviews-server.herokuapp.com/review/create', {
         method: 'POST',
         body: JSON.stringify({review: {
             title: title,
