@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import CreateReview from './CreateReview';
-import ReviewTable from './ReviewTable';
+import ReviewTable from './ReviewTable.js';
 import EditReview from './EditReview';
 
 const ReviewIndex = (props) => {
