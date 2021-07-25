@@ -35,9 +35,9 @@ const CreateReview = (props) => {
     const [ imageURL, setImageURL ] = useState('');
     const classes = useStyles();
 
-    setTitle(dataResults.title)
-    setDescription(dataResults.overview)
-    setImageURL(dataResults.poster_path)
+    setTitle(props.dataResults.title)
+    setDescription(props.dataResults.overview)
+    setImageURL(props.dataResults.poster_path)
 
     const handleSubmit = (e) => {
     e.preventDefault();
