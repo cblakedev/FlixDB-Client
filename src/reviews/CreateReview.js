@@ -2,26 +2,43 @@ import React, {
     useState
 } from 'react';
 import {
-    Row,
-    Col,
-    Container
+    Button,
+    Form,
+    FormGroup,
+    Label,
+    Input
 } from 'reactstrap'
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import CardActions from "@material-ui/core/CardActions";
-import TextField from "@material-ui/core/TextField";
+
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
+    },
+    paper: {
+    maxWidth: 400,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
+    },
+}));
 
 const CreateReview = (props) => {
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
-    const [ rating, setRating ] = useState('');
     const [ review, setReview ] = useState('');
     const [ imageURL, setImageURL ] = useState('');
-    const [ genre, setGenre ] = useState('');
-    const [ cast, setCast ] = useState('');
-    
+    const classes = useStyles();
+
+    setTitle(dataResults.title)
+    setDescription(dataResults.overview)
+    setImageURL(dataResults.poster_path)
+
     const handleSubmit = (e) => {
     e.preventDefault();
     fetch('http://localhost:3000/review/create', {
@@ -29,11 +46,8 @@ const CreateReview = (props) => {
         body: JSON.stringify({review: {
             title: title,
             description: description,
-            rating: rating,
             review: review,
-            imageURL: imageURL,
-            genre: genre,
-            cast: cast
+            imageURL: imageURL
         }}),
         headers: new Headers({
             'Content-Type': "application/json",
@@ -44,25 +58,36 @@ const CreateReview = (props) => {
         console.log(logData);
         setTitle('');
         setDescription('');
-        setRating('');
         setReview('');
         setImageURL('');
-        setGenre('');
-        setCast('');
-        props.fetchMovies()
+        props.fetchMovies();
     })
-}
-    
-    return (
-        <Container id='homeWrapper'>
-            <Row className='searchField'>
-                <h4>Create a Review</h4>
-                <Col>
-                    {<img src={`https://image.tmdb.org/t/p/w154${props.dataResults.poster_path}` alt='No poster available'}/>}
-                </Col>
-            </Row>
-        </Container>
-    )
+}   
+
+        return (
+            <div className={classes.root}>
+                <Form onSubmit={handleSubmit}>
+                <Paper className={classes.paper}>
+                    <Grid container wrap="nowrap" spacing={2}>
+                        <Grid item>
+                            <Avatar>{imageURL}</Avatar>
+                        </Grid>
+                    <Grid item xs>
+                        <Typography>
+                            <h4>{title}</h4>
+                            <p>{description}</p>
+                            <FormGroup>
+                                <Label htmlFor='review'/>
+                                <Input name='review' value={review} onChange={(e) => setReview(e.target.value)}/>
+                            </FormGroup>
+                        </Typography>
+                    </Grid>
+                    </Grid>
+                </Paper>
+                <Button type='submit'>Click to Submit</Button>
+                </Form>
+            </div>
+        );
     }
 
-    export default CreateReview;
+export default CreateReview;
