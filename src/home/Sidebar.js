@@ -19,12 +19,12 @@ const SideBar = (props) => {
 
     return (
         <div id='mainWrapper'>
-            <Row className='headerBar'>
+            <Row className='headerBar g-0'>
                 <Col>
                     Movie Reviews
                 </Col>
             </Row>
-            <Row className='sidebarWrapper'>
+            <Row className='sidebarWrapper g-0'>
                 <div className='sidebarContent'>
                     <Col className='userInfo'>
                         <div>User Image</div>
@@ -41,7 +41,7 @@ const SideBar = (props) => {
                 </div>
                 <div className='sidebarRoute'>
                     <Switch>
-                        <Route exact path='/'><MainHome></MainHome></Route>
+                        <Route exact path='/'><MainHome /></Route>
                         <Route exact path='/myreviews'>My Reviews</Route>
                         <Route exact path='/alluserreviews'>All User Reviews</Route>
                         <Route exact path='/watchlist'>Watch List</Route>

@@ -196,11 +196,45 @@ label + .MuiInput-formControl {
  /* Main Home */
  #homeWrapper {
   height: 100%;
-  
 }
 
-.searchField {
+.searchCol {
+  margin: 20px 20%;
+}
+
+.searchGroup {
+  display: flex;
+}
+
+.resultsWrapper {
+  padding-top: 50px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center !important;
+}
+
+.resultsCol {
+  margin: 30px;
+  width: 160px !important;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  max-width: 160px !important;
+
+}
+
+.resultsCol h5 {
+  padding: 7px 0;
+  width: 160px !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.altBackground {
+  height: 100%;
+  width: 154px;
+  background-color: rgb(12, 12, 24);
+  padding: 30% 10px 0 10px;
 }
 
