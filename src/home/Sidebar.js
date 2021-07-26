@@ -6,7 +6,7 @@ import { RiHomeWifiFill } from 'react-icons/ri';
 import { VscPreview, VscOpenPreview } from 'react-icons/vsc';
 import { FaListAlt } from 'react-icons/fa'
 import MainHome from '../reviews/MainHome';
-
+import { Button } from 'reactstrap';
 
 const SideBar = (props) => {
 
@@ -21,7 +21,7 @@ const SideBar = (props) => {
         <div id='mainWrapper'>
             <Row className='headerBar g-0'>
                 <Col>
-                    Movie Reviews
+                    <h3>Movie Reviews</h3>
                 </Col>
             </Row>
             <Row className='sidebarWrapper g-0'>
@@ -37,6 +37,7 @@ const SideBar = (props) => {
                             <li><Link to='/alluserreviews'><VscOpenPreview /> All User Reviews</Link></li>
                             <li><Link to='/watchlist'><FaListAlt /> Watch List</Link></li>
                         </ul>
+                        <Button onClick={props.logout}>Logout</Button>
                     </Col>
                 </div>
                 <div className='sidebarRoute'>

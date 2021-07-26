@@ -166,9 +166,17 @@ label + .MuiInput-formControl {
 }
 
 .userOperations {
+  position: relative;
   height: 70% !important;
   flex: none !important;
   padding: 0 !important;
+}
+
+.userOperations Button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -35px;
 }
 
 .operationsList li {
