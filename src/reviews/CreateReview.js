@@ -41,7 +41,7 @@ const CreateReview = (props) => {
 
     const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://cb-movie-reviews-server.herokuapp.com/review/create', {
+    fetch('https://cb-movie-reviews-server.herokuapp.com/reviews/create', {
         method: 'POST',
         body: JSON.stringify({review: {
             title: title,
@@ -51,7 +51,7 @@ const CreateReview = (props) => {
         }}),
         headers: new Headers({
             'Content-Type': "application/json",
-            'Authorization': props.token
+            'Authorization': `Bearer ${props.token}`
         })
     }).then((res) => res.json())
     .then((logData) => {
