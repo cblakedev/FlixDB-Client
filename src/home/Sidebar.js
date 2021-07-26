@@ -6,6 +6,7 @@ import { RiHomeWifiFill } from 'react-icons/ri';
 import { VscPreview, VscOpenPreview } from 'react-icons/vsc';
 import { FaListAlt } from 'react-icons/fa'
 import MainHome from '../reviews/MainHome';
+import AllReviews from '../reviews/AllReviews';
 import { Button } from 'reactstrap';
 
 const SideBar = (props) => {
@@ -42,9 +43,9 @@ const SideBar = (props) => {
                 </div>
                 <div className='sidebarRoute'>
                     <Switch>
-                        <Route exact path='/'><MainHome /></Route>
+                        <Route exact path='/'><MainHome token={props.token}/></Route>
                         <Route exact path='/myreviews'>My Reviews</Route>
-                        <Route exact path='/alluserreviews'>All User Reviews</Route>
+                        <Route exact path='/alluserreviews'><AllReviews token={props.token}/></Route>
                         <Route exact path='/watchlist'>Watch List</Route>
                     </Switch>
                 </div>

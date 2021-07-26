@@ -1,14 +1,6 @@
-import React, {
-    useState,
-    useEffect,
-    useRef
-} from 'react';
-import {
-    Row,
-    Col,
-    Container
-} from 'reactstrap'
-import { Button, Form, FormGroup, Input } from 'reactstrap';
+import React, {useState, useEffect, useRef} from 'react';
+import {Row, Col, Container} from 'reactstrap'
+import {Button, Form, FormGroup, Input} from 'reactstrap';
 
 
 const SearchBar = () => {
