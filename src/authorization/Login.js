@@ -25,12 +25,12 @@ const Login = (props) => {
         },
         validationSchema: RegisterSchema, //links yups schema to formik
         onSubmit: (e) => { //fetches user info from our server
-            fetch(`https://cb-movie-reviews-server.herokuapp.com/user/login`, {
+            fetch(`http://localhost:5000/user/login`, {
                 method: 'POST',
                 body: JSON.stringify({
                     user: {
                         username: e.username,
-                        password: e.password,
+                        password: e.password
                     }
                 }),
                 headers: new Headers({
@@ -39,7 +39,7 @@ const Login = (props) => {
             }).then((response) => response.json()//jsonify the data
             ).then((data) => {
                 console.log(data)
-                props.updatetoken(data.sessionToken) //we use updatetoken function within the Auth.js file. We use props to access it.
+                props.updatetoken(data) //we use updatetoken function within the Auth.js file. We use props to access it.
             })
         },
     });
