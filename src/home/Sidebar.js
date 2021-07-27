@@ -12,12 +12,6 @@ import { Button } from 'reactstrap';
 const SideBar = (props) => {
 
 
-
-
-
-
-
-
     return (
         <div id='mainWrapper'>
             <Row className='headerBar g-0'>
@@ -35,7 +29,7 @@ const SideBar = (props) => {
                         <ul className='operationsList'>
                             <li><Link to='/'><RiHomeWifiFill /> Home</Link></li>
                             <li><Link to='/myreviews'><VscPreview /> My Reviews</Link></li>
-                            <li><Link to='/alluserreviews'><VscOpenPreview /> All User Reviews</Link></li>
+                            <li><Link to='/alluserreviews'><VscOpenPreview /> Movie Reviews</Link></li>
                             <li><Link to='/watchlist'><FaListAlt /> Watch List</Link></li>
                         </ul>
                         <Button onClick={props.logout}>Logout</Button>

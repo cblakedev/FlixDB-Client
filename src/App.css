@@ -246,3 +246,31 @@ label + .MuiInput-formControl {
   padding: 30% 10px 0 10px;
 }
 
+/* All User Reviews */
+ .allReviewsWrapper {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .userReviewsWrapper {
+   max-width: 500px !important;
+   margin: 40px auto;
+   padding: 25px !important;
+   border: 1px solid grey;
+   box-shadow: 0 0 15px -3px #00FFF5;
+ }
+
+ .reviewsTitle {
+   margin: 15px 0 !important;
+ }
+
+ .reviewsHeader {
+   margin: 30px auto;
+   max-width: 550px;
+   border-bottom: 1px solid #494e57;
+   padding: 10px 0;
+ }
+
+ .reviewsPoster {
+   margin-top: 100px;;
+ }
