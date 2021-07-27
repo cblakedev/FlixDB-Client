@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
-const ProfileEdit = (props) => {
-    const [editImage, setEditImage] = useState(props.profileToUpdate.profile);
-    const [editUserbio, setEditUserbio] = useState(props.profileToUpdate.profile);
+const ProfileEdit = (props) => { 
+    console.log(props.profileToUpdate)
+    const [editImage, setEditImage] = useState(props.profileToUpdate.image);
+    const [editUserbio, setEditUserbio] = useState(props.profileToUpdate.UserBio);
 
     const profileUpdate = (event, profile) => {
         event.preventDefault();
         fetch(`http://localhost:5000/${props.profileToUpdate.id}`, {
             method: 'PUT',
-            body: JSON.stringify({log: {image: editImage, UserBio: editUserbio}}),
+            body: JSON.stringify( {user:  {image: editImage, UserBio: editUserbio}}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': props.token

@@ -22,20 +22,25 @@ function App() {
     console.log('Successfully logged out!')
   }
 
+  const updateToken = (newToken) => { //updates a user token and saves it in local stoage
+    localStorage.setItem('token', newToken);
+    setSessionToken(newToken);
+    console.log(sessionToken);
+}
   //put this function in login file
   
 
-  // const protectedViews = () => {
-  //   return (
-  //     sessionToken === localStorage.getItem('token') ? <WorkoutIndex token={sessionToken} />
-  //       : <Auth updateToken={updateToken} />)
-  // }
+  const protectedViews = () => {
+    return (
+      sessionToken === localStorage.getItem('token') ? <SideBar token={sessionToken} logout={clearToken}/>
+        : <Auth updateToken={updateToken}/>
+    )}
 
   return (
     <div className="App">
       <div>
         <Router>
-          <SideBar />
+          {protectedViews()}
         </Router>
       </div>
     </div>

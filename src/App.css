@@ -160,15 +160,29 @@ label + .MuiInput-formControl {
 }
 
 .userInfo {
+  position: relative;
   height: 30% !important;
+  flex-direction: none !important;
+  padding: 0 !important;
+}
+
+.Avatar {
+  position: absolute;
+  margin-left: 150px;
+}
+
+.userOperations {
+  position: relative;
+  height: 70% !important;
   flex: none !important;
   padding: 0 !important;
 }
 
-.userOperations {
-  height: 70% !important;
-  flex: none !important;
-  padding: 0 !important;
+.userOperations Button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -35px;
 }
 
 .operationsList li {
@@ -237,4 +251,3 @@ label + .MuiInput-formControl {
   background-color: rgb(12, 12, 24);
   padding: 30% 10px 0 10px;
 }
-
