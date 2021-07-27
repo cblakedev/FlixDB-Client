@@ -245,3 +245,7 @@ label + .MuiInput-formControl {
   background-color: rgb(12, 12, 24);
   padding: 30% 10px 0 10px;
 }
+
+.homepageButton {
+  margin: 2px;
+}
