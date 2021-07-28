@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import Auth from './authorization/Auth';
 import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
-import SideBar from './home/Sidebar'
+import SideBar from './home/SideBar'
 
 
 

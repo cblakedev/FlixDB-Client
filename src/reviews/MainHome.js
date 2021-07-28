@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Row, Col, Container} from 'reactstrap'
-import {Button, Form, FormGroup, Input} from 'reactstrap';
+import React, { useState, useEffect, useRef } from 'react';
+import { Row, Col, Container } from 'reactstrap'
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
 import CreateReview from './CreateReview';
 
@@ -20,6 +20,9 @@ const SearchBar = (props) => {
     const [search, setSearch] = useState({});
     const [pageNumber, setPageNumber] = useState(1);
     const [searchPageNumber, setSearchPageNumber] = useState(1);
+    const [selected, setSelected] = useState(null);
+    const [modalIsOpen, setIsOpen] = useState('false');
+    const [userReview, setUserReview] = useState('')
     const isMounted = useRef(false);
     const [modalIsOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState('');
@@ -30,15 +33,14 @@ const SearchBar = (props) => {
     let dataResults = search.results;
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&page=${pageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${window.env.API_KEY}&language=en-US&page=${pageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => setSearch(data))
     }, [pageNumber])
 
-
     useEffect(() => {
         if (isMounted.current) {
-            fetch(`https://api.themoviedb.org/3/movie/popular?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&page=${pageNumber}&include_adult=false`)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${window.env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
                 .then((res) => res.json())
                 .then((data) => {
                     setSearch(data)
@@ -50,11 +52,10 @@ const SearchBar = (props) => {
 
     }, [searchPageNumber])
 
-
     const fetchMovies = (e) => {
         e.preventDefault()
 
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&page=${pageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${window.env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
@@ -62,23 +63,25 @@ const SearchBar = (props) => {
             })
     }
 
-    const openModal = result =>{
+    const openModal = result => {
         setIsOpen(result);
     }
-    
+
     function afterOpenModal() {
         // references are now sync'd and can be accessed.
     }
-    
+
     const closeModal = result => {
         setIsOpen(false);
     }
+
 
     useEffect(() => {
         if(modalIsOpen) {
             setIsOpen(true)
         }
     }, [modalIsOpen]);
+
 
     return (
         <Container id='homeWrapper'>
@@ -96,12 +99,12 @@ const SearchBar = (props) => {
                 {dataResults !== undefined ? dataResults.map(result => {
                     return (
                         <Col className='resultsCol'>
-                            {result.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
+                            {result.poster_path != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
                             <h5>{result.title}</h5>
-                            <Button 
-                            onMouseEnter={() => {setSelected(result)}}
-                            onClick={() => {setSelected(result); openModal(selected); console.log(selected)}}>Movie Details
+                            <Button
+                                onMouseEnter={() => { setSelected(result) }}
+                                onClick={() => { setSelected(result); openModal(selected); console.log(selected) }}>Movie Details
                             </Button>
                         </Col>
                     )
@@ -113,6 +116,7 @@ const SearchBar = (props) => {
                 }
             </Row>
             {!!selected && (
+
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -133,6 +137,7 @@ const SearchBar = (props) => {
                 <Button className="homepageButton">Add to Watchlist</Button>
                 <Button className="homepageButton" onClick={closeModal}>Close</Button>
             </Modal>
+
             )}
             {
                 value !== '' ?
@@ -153,7 +158,7 @@ const SearchBar = (props) => {
         </Container>
     )
 
-    
+
 }
 
 
