@@ -12,16 +12,10 @@ import Register from './Register';
 import '../App.css'
 
 
-const AuthorizationTabs = () => {
+const AuthorizationTabs = (props) => {
     const [value, setValue] = useState(0);
-    const [sessionToken, setSessionToken] = useState('');
 
-    const updateToken = (newToken) => { //updates a user token and saves it in local stoage
-        localStorage.setItem('token', newToken);
-        setSessionToken(newToken);
-        console.log(sessionToken);
-    }
-
+    
     const handleChange = (e, newValue) => { //handles the change between tabs by setting a new value to a tab
         setValue(newValue);
     };
@@ -36,10 +30,10 @@ const AuthorizationTabs = () => {
                     </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0}> {/* each TabPanel displays the corresponding child components(Login, Register) */}
-                    <Login updatetoken={updateToken} handleChange={handleChange} />
+                    <Login updatetoken={props.updateToken} handleChange={handleChange} />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <Register updatetoken={updateToken} handleChange={handleChange} />
+                    <Register updatetoken={props.updateToken} handleChange={handleChange} />
                 </TabPanel>
             </div>
         </div>
