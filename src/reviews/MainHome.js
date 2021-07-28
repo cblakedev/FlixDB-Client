@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Row, Col, Container} from 'reactstrap'
+import {Row, Col, Container} from 'reactstrap';
 import {Button, Form, FormGroup, Input} from 'reactstrap';
+
 
 
 const SearchBar = () => {
@@ -18,7 +19,6 @@ const SearchBar = () => {
             .then((data) => setSearch(data))
     }, [pageNumber])
 
-
     useEffect(() => {
         if (isMounted.current) {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=${window.env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
@@ -32,7 +32,6 @@ const SearchBar = () => {
         }
 
     }, [searchPageNumber])
-
 
     const fetchMovies = (e) => {
         e.preventDefault()
@@ -62,7 +61,7 @@ const SearchBar = () => {
                 {dataResults !== undefined ? dataResults.map(result => {
                     return (
                         <Col className='resultsCol'>
-                            {result.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
+                            {result.poster_path != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
                             <h5>{result.title}</h5>
                             <Button>Review Me</Button>

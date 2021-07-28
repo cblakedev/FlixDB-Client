@@ -136,19 +136,28 @@ label + .MuiInput-formControl {
   margin: 0;
   width: 100%;
 }
+
+.avatar {
+  position: relative;
+  left: 50% !important;
+  margin-left: -20px!important;
+}
+
 .headerBar {
-  height: 5vh;
+  padding: 10px 0;
   position: fixed;
   width: 100%;
   margin: 0 !important;
   background-color: #393E46;
   color: white;
+  z-index: 2;
 }
+
 .sidebarContent {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  width: 25% !important;
+  max-width: 350px !important;
   height: 100vh;
   padding-top: 5% !important;
   display: flex;
@@ -156,7 +165,7 @@ label + .MuiInput-formControl {
   padding: 5px;
   background-color: #393E46;
   color: white;
-
+  border-right: 2px solid #00FFF5;
 }
 
 .userInfo {
@@ -184,8 +193,12 @@ label + .MuiInput-formControl {
  list-style: none;
 }
 
+.operationsList a:hover {
+ color: #00ADB5 !important;
+}
+
 .operationsList {
-  padding-left: 35%;
+  padding: 0 20% 0 30%;
   margin: 0;
   text-align: left;
 }
@@ -199,7 +212,7 @@ label + .MuiInput-formControl {
   flex: 1 !important;
   background-color: #222831;
   color: white;
-  padding-top: 5% !important;
+  padding-top: 10% !important;
 }
  /* Main Home */
  #homeWrapper {
@@ -228,7 +241,21 @@ label + .MuiInput-formControl {
   flex-direction: column;
   justify-content: flex-end;
   max-width: 160px !important;
+}
 
+.moviePoster {
+  box-shadow: 0 0 15px -3px #00FFF5;
+}
+
+.noResultsCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+}
+
+.noResultsCol h1 {
+  font-size: 4rem;
 }
 
 .resultsCol h5 {
@@ -244,8 +271,16 @@ label + .MuiInput-formControl {
   width: 154px;
   background-color: rgb(12, 12, 24);
   padding: 30% 10px 0 10px;
+  box-shadow: 0 0 15px -3px #00FFF5;
 }
 
+.previousBtn {
+  margin: 20px;
+}
+
+.nextBtn {
+  margin: 20px;
+}
 /* All User Reviews */
  .allReviewsWrapper {
    display: flex;
@@ -258,6 +293,10 @@ label + .MuiInput-formControl {
    padding: 25px !important;
    border: 1px solid grey;
    box-shadow: 0 0 15px -3px #00FFF5;
+ }
+
+ .userReviewsWrapper {
+   background-color: #393E46;
  }
 
  .reviewsTitle {
@@ -273,4 +312,15 @@ label + .MuiInput-formControl {
 
  .reviewsPoster {
    margin-top: 100px;;
+ }
+
+ .noResultsWrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  height: 50vh !important;
+ }
+
+ .noResultsWrapper h1{
+  font-size: 4rem;
  }

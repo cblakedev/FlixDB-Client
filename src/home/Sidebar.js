@@ -8,6 +8,7 @@ import { FaListAlt } from 'react-icons/fa'
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
 import { Button } from 'reactstrap';
+import {Avatar} from '@material-ui/core';
 
 const SideBar = (props) => {
 
@@ -16,13 +17,14 @@ const SideBar = (props) => {
         <div id='mainWrapper'>
             <Row className='headerBar g-0'>
                 <Col>
-                    <h3>Movie Reviews</h3>
+                    <h2>Movie Reviews</h2>
                 </Col>
             </Row>
             <Row className='sidebarWrapper g-0'>
                 <div className='sidebarContent'>
                     <Col className='userInfo'>
                         <div>User Image</div>
+                        <Avatar size={128} icon='user' className='avatar'/>
                         <div>User Bio</div>
                     </Col>
                     <Col className='userOperations'>
