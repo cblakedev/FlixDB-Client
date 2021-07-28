@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import {Row, Col, Container} from 'reactstrap'
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import Modal from 'react-modal';
-import ReactDOM from 'react-dom';
 import CreateReview from './CreateReview';
 
 const customStyles = {
@@ -16,8 +15,6 @@ const customStyles = {
     },
 };
 
-
-
 const SearchBar = () => {
     const [value, setValue] = useState('');
     const [search, setSearch] = useState({});
@@ -26,7 +23,7 @@ const SearchBar = () => {
     const isMounted = useRef(false);
     const [modalIsOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState('');
-
+    
     let dataResults = search.results;
 
     useEffect(() => {
@@ -122,19 +119,10 @@ const SearchBar = () => {
                 <div>
                     <p>{selected.overview}</p>
                 </div>
-                <form>
-                                    <input />
-                                </form>
-                                <form>
-                                    <button className="homepageButton" onClick={() => CreateReview(selected)}>Submit Review</button>
-                                </form>
-                                <form>
-                                    <button className="homepageButton">Add to Watchlist</button>
-                                </form>
-                                <form>
-                                <button className="homepageButton" onClick={closeModal}>Close</button>
-                                </form>
-                            </Modal>
+                <CreateReview selected={selected} />
+                <Button className="homepageButton">Add to Watchlist</Button>
+                <Button className="homepageButton" onClick={closeModal}>Close</Button>
+            </Modal>
             )}
             {
                 value !== '' ?

@@ -8,16 +8,19 @@ import {
     Label,
     Input
 } from 'reactstrap'
+import SearchBar from "./MainHome";
 
 const CreateReview = (props) => {
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
-    const [ review, setReview ] = useState('');
     const [ imageURL, setImageURL ] = useState('');
+    const [ userReview, setUserReview ] = useState('');
 
-    setTitle(props.selected.title)
-    setDescription(props.selected.overview)
-    setImageURL(props.selected.poster_path)
+    setTitle(props.selected.title);
+    setDescription(props.selected.overview);
+    setImageURL(props.selected.poster_path);
+
+    console.log(props.selected);
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ const CreateReview = (props) => {
         body: JSON.stringify({review: {
             title: title,
             description: description,
-            review: review,
+            review: userReview,
             imageURL: imageURL
         }}),
         headers: new Headers({
@@ -38,10 +41,15 @@ const CreateReview = (props) => {
         console.log(logData);
         props.fetchMovies();
     })
-}   
+    }
 
         return (
-            <div>{`Review for ${props.dataResults.title} has been saved.`}</div>
+            <div>
+                <Form className="reviewForm">
+                    <Input id="user-review" value={userReview} label="Write a Review" type="text" onChange={(e) => setUserReview(e.target.value)} />
+                    <Button className="homepageButton" id="submitReviewButton" onClick={() => handleSubmit}>Submit Review</Button>
+                </Form>
+            </div>
         );
     }
 
