@@ -3,8 +3,8 @@ import { Row, Col, Container } from 'reactstrap'
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 
 const AllReviews = (props) => {
-    const [reviewsData, setReviewsData] = useState([]);
-    const [value, setValue] = useState('');
+    const [reviewsData, setReviewsData] = useState([])
+    const [value, setValue] = useState('')
 
 
     const fetchMovies = async (e) => {
@@ -19,7 +19,7 @@ const AllReviews = (props) => {
         })
             .then(res => res.json())
             .then(data => setReviewsData(data))
-            console.log(reviewsData)
+        console.log(reviewsData)
     }
 
     return (
@@ -56,7 +56,7 @@ const AllReviews = (props) => {
                     </Row>
                 </div>
                 :
-                <Row className='g-0'>
+                <Row className=' g-0'>
                     <Col className='noResultsWrapper'>
                         <h1> Search for a movie and see what people are saying!</h1>
                     </Col>
