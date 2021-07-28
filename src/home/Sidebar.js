@@ -9,6 +9,9 @@ import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
 import { Button } from 'reactstrap';
 import { Avatar } from '@material-ui/core';
+import MyReviews from '../reviews/MyReviews';
+import Watchlist from '../reviews/WatchList';
+
 
 const SideBar = (props) => {
 
@@ -40,9 +43,10 @@ const SideBar = (props) => {
                 <div className='sidebarRoute'>
                     <Switch>
                         <Route exact path='/'><MainHome token={props.token} /></Route>
-                        <Route exact path='/myreviews'>My Reviews</Route>
+                        <Route exact path='/myreviews'><MyReviews token={props.token} /></Route>
                         <Route exact path='/alluserreviews'><AllReviews token={props.token} /></Route>
-                        <Route exact path='/watchlist'>Watch List</Route>
+                        <Route exact path='/watchlist'><Watchlist token={props.token} /></Route>
+
                     </Switch>
                 </div>
             </Row>

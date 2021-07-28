@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Row, Col, Container } from 'reactstrap'
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
-import ReactDOM from 'react-dom';
 import CreateReview from './CreateReview';
 
 const customStyles = {
@@ -16,9 +15,7 @@ const customStyles = {
     },
 };
 
-
-
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [value, setValue] = useState('');
     const [search, setSearch] = useState({});
     const [pageNumber, setPageNumber] = useState(1);
@@ -27,9 +24,13 @@ const SearchBar = () => {
     const [modalIsOpen, setIsOpen] = useState('false');
     const [userReview, setUserReview] = useState('')
     const isMounted = useRef(false);
-
-
-    let dataResults = search.results
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [selected, setSelected] = useState('');
+    const toggle = () => {
+        setIsOpen(!modalIsOpen)
+    };
+    
+    let dataResults = search.results;
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${window.env.API_KEY}&language=en-US&page=${pageNumber}&include_adult=false`)
@@ -75,6 +76,13 @@ const SearchBar = () => {
     }
 
 
+    useEffect(() => {
+        if(modalIsOpen) {
+            setIsOpen(true)
+        }
+    }, [modalIsOpen]);
+
+
     return (
         <Container id='homeWrapper'>
             <Row className='searchField g-0'>
@@ -108,34 +116,28 @@ const SearchBar = () => {
                 }
             </Row>
             {!!selected && (
-                <Modal
-                    isOpen={modalIsOpen}
-                    onAfterOpen={afterOpenModal}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    contentLabel="Movie Details"
-                >
 
-                    <h2>Movie Details</h2>
-                    <div className='modalPosterWrapper'>{selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
-                        <h2 className='altBackground'>No poster available</h2>}</div>
-                    <h4>{selected.title}</h4>
-                    <div>
-                        <p>{selected.overview}</p>
-                    </div>
-                    <form>
-                        <input />
-                    </form>
-                    <form>
-                        <button className="homepageButton" onClick={() => CreateReview(selected)}>Submit Review</button>
-                    </form>
-                    <form>
-                        <button className="homepageButton">Add to Watchlist</button>
-                    </form>
-                    <form>
-                        <button className="homepageButton" onClick={closeModal}>Close</button>
-                    </form>
-                </Modal>
+            <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Movie Details"
+                toggle={toggle}
+            >
+                                
+                <h2>Movie Details</h2>
+                <div>{selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
+                <h2 className='altBackground'>No poster available</h2>}</div>
+                <h4>{selected.title}</h4>
+                <div>
+                    <p>{selected.overview}</p>
+                </div>
+                <CreateReview selected={selected} token={props.token} />
+                <Button className="homepageButton">Add to Watchlist</Button>
+                <Button className="homepageButton" onClick={closeModal}>Close</Button>
+            </Modal>
+
             )}
             {
                 value !== '' ?
