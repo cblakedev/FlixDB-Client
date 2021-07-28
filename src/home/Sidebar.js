@@ -12,6 +12,7 @@ import { Avatar } from '@material-ui/core';
 import MyReviews from '../reviews/MyReviews';
 import Watchlist from '../reviews/WatchList';
 
+
 const SideBar = (props) => {
 
 
@@ -45,6 +46,7 @@ const SideBar = (props) => {
                         <Route exact path='/myreviews'><MyReviews token={props.token} /></Route>
                         <Route exact path='/alluserreviews'><AllReviews token={props.token} /></Route>
                         <Route exact path='/watchlist'><Watchlist token={props.token} /></Route>
+
                     </Switch>
                 </div>
             </Row>
