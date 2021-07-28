@@ -8,7 +8,7 @@ import { FaListAlt } from 'react-icons/fa'
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
 import { Button } from 'reactstrap';
-import {Avatar} from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 
 const SideBar = (props) => {
 
@@ -24,7 +24,7 @@ const SideBar = (props) => {
                 <div className='sidebarContent'>
                     <Col className='userInfo'>
                         <div>User Image</div>
-                        <Avatar size={128} icon='user' className='avatar'/>
+                        <Avatar size={128} icon='user' className='avatar' />
                         <div>User Bio</div>
                     </Col>
                     <Col className='userOperations'>
@@ -39,9 +39,9 @@ const SideBar = (props) => {
                 </div>
                 <div className='sidebarRoute'>
                     <Switch>
-                        <Route exact path='/'><MainHome token={props.token}/></Route>
+                        <Route exact path='/'><MainHome token={props.token} /></Route>
                         <Route exact path='/myreviews'>My Reviews</Route>
-                        <Route exact path='/alluserreviews'><AllReviews token={props.token}/></Route>
+                        <Route exact path='/alluserreviews'><AllReviews token={props.token} /></Route>
                         <Route exact path='/watchlist'>Watch List</Route>
                     </Switch>
                 </div>

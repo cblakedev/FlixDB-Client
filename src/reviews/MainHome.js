@@ -1,6 +1,20 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Row, Col, Container} from 'reactstrap';
-import {Button, Form, FormGroup, Input} from 'reactstrap';
+import React, { useState, useEffect, useRef } from 'react';
+import { Row, Col, Container } from 'reactstrap'
+import { Button, Form, FormGroup, Input } from 'reactstrap';
+import Modal from 'react-modal';
+import ReactDOM from 'react-dom';
+import CreateReview from './CreateReview';
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+    },
+};
 
 
 
@@ -9,7 +23,11 @@ const SearchBar = () => {
     const [search, setSearch] = useState({});
     const [pageNumber, setPageNumber] = useState(1);
     const [searchPageNumber, setSearchPageNumber] = useState(1);
+    const [selected, setSelected] = useState(null);
+    const [modalIsOpen, setIsOpen] = useState('false');
+    const [userReview, setUserReview] = useState('')
     const isMounted = useRef(false);
+
 
     let dataResults = search.results
 
@@ -44,6 +62,18 @@ const SearchBar = () => {
             })
     }
 
+    const openModal = result => {
+        setIsOpen(result);
+    }
+
+    function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+    }
+
+    const closeModal = result => {
+        setIsOpen(false);
+    }
+
 
     return (
         <Container id='homeWrapper'>
@@ -64,7 +94,10 @@ const SearchBar = () => {
                             {result.poster_path != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
                             <h5>{result.title}</h5>
-                            <Button>Review Me</Button>
+                            <Button
+                                onMouseEnter={() => { setSelected(result) }}
+                                onClick={() => { setSelected(result); openModal(selected); console.log(selected) }}>Movie Details
+                            </Button>
                         </Col>
                     )
                 })
@@ -74,6 +107,36 @@ const SearchBar = () => {
                     </Col>
                 }
             </Row>
+            {!!selected && (
+                <Modal
+                    isOpen={modalIsOpen}
+                    onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Movie Details"
+                >
+
+                    <h2>Movie Details</h2>
+                    <div className='modalPosterWrapper'>{selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
+                        <h2 className='altBackground'>No poster available</h2>}</div>
+                    <h4>{selected.title}</h4>
+                    <div>
+                        <p>{selected.overview}</p>
+                    </div>
+                    <form>
+                        <input />
+                    </form>
+                    <form>
+                        <button className="homepageButton" onClick={() => CreateReview(selected)}>Submit Review</button>
+                    </form>
+                    <form>
+                        <button className="homepageButton">Add to Watchlist</button>
+                    </form>
+                    <form>
+                        <button className="homepageButton" onClick={closeModal}>Close</button>
+                    </form>
+                </Modal>
+            )}
             {
                 value !== '' ?
                     <Row className='g-0'>
@@ -92,7 +155,9 @@ const SearchBar = () => {
             }
         </Container>
     )
+
+
 }
 
-export default SearchBar
 
+export default SearchBar

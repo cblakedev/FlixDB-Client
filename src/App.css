@@ -251,7 +251,7 @@ label + .MuiInput-formControl {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 50vh;
+  height: 40vh;
 }
 
 .noResultsCol h1 {
@@ -281,12 +281,21 @@ label + .MuiInput-formControl {
 .nextBtn {
   margin: 20px;
 }
+
+.modalPosterWrapper {
+  max-width: 350px;
+}
+
 /* All User Reviews */
  .allReviewsWrapper {
    display: flex;
    flex-direction: column;
  }
 
+ .reviewsPoster {
+  box-shadow: 0 0 15px -3px #00FFF5;
+ }
+ 
  .userReviewsWrapper {
    max-width: 500px !important;
    margin: 40px auto;
@@ -318,7 +327,7 @@ label + .MuiInput-formControl {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  height: 50vh !important;
+  height: 40vh !important;
  }
 
  .noResultsWrapper h1{
