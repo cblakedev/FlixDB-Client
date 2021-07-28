@@ -15,7 +15,7 @@ const customStyles = {
     },
 };
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [value, setValue] = useState('');
     const [search, setSearch] = useState({});
     const [pageNumber, setPageNumber] = useState(1);
@@ -23,6 +23,9 @@ const SearchBar = () => {
     const isMounted = useRef(false);
     const [modalIsOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState('');
+    const toggle = () => {
+        setIsOpen(!modalIsOpen)
+    };
     
     let dataResults = search.results;
 
@@ -71,6 +74,12 @@ const SearchBar = () => {
         setIsOpen(false);
     }
 
+    useEffect(() => {
+        if(modalIsOpen) {
+            setIsOpen(true)
+        }
+    }, [modalIsOpen]);
+
     return (
         <Container id='homeWrapper'>
             <Row className='searchField g-0'>
@@ -110,6 +119,7 @@ const SearchBar = () => {
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Movie Details"
+                toggle={toggle}
             >
                                 
                 <h2>Movie Details</h2>
@@ -119,7 +129,7 @@ const SearchBar = () => {
                 <div>
                     <p>{selected.overview}</p>
                 </div>
-                <CreateReview selected={selected} />
+                <CreateReview selected={selected} token={props.token} />
                 <Button className="homepageButton">Add to Watchlist</Button>
                 <Button className="homepageButton" onClick={closeModal}>Close</Button>
             </Modal>

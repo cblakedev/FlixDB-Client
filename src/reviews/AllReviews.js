@@ -19,7 +19,7 @@ const AllReviews = (props) => {
         })
             .then(res => res.json())
             .then(data => setReviewsData(data))
-            console.log(reviewsData)
+        console.log(reviewsData)
     }
 
     return (
@@ -56,8 +56,8 @@ const AllReviews = (props) => {
                     </Row>
                 </div>
                 :
-                <Row className='noResultsWrapper g-0'>
-                    <Col>
+                <Row className=' g-0'>
+                    <Col className='noResultsWrapper'>
                         <h1> Search for a movie and see what people are saying!</h1>
                     </Col>
                 </Row>

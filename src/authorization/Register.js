@@ -35,12 +35,14 @@ const Register = (props) => { //we pass in props to access other functions from 
         },
         validationSchema: RegisterSchema, //links yup schema to formik
         onSubmit: (e) => { //handles the fetch post request to register a user on form submit
-            fetch(`http://localhost:5000/user/register`, {
+            fetch(`https://cb-movie-reviews-server.herokuapp.com/user/register`, {
                 method: 'POST',
                 body: JSON.stringify({
                     user: {
                         username: e.username,
-                        password: e.password
+                        password: e.password,
+                        image: "place holder", //a string of placeholder is used to pass image and userBio property upon sign up
+                        userBio: "place holder"
                     }
                 }),
                 headers: new Headers({
@@ -49,7 +51,7 @@ const Register = (props) => { //we pass in props to access other functions from 
             }).then((response) => response.json()
             ).then((data) => {
                 console.log(data)
-                props.updatetoken(data)
+                props.updatetoken(data.sessionToken)
             })
         },
     });
