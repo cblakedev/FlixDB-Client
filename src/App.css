@@ -165,7 +165,8 @@ label + .MuiInput-formControl {
   padding: 5px;
   background-color: #393E46;
   color: white;
-  border-right: 2px solid #00FFF5;
+  box-shadow: 0 0 15px -2px #00FFF5;
+  border-right: 1px solid grey;
 }
 
 .userInfo {
