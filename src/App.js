@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Auth from './authorization/Auth';
 import React, { Component, useState, useEffect } from 'react';
