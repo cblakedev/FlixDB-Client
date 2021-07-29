@@ -3,6 +3,7 @@ import { Row, Col, Container } from 'reactstrap'
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
 import CreateReview from './CreateReview';
+import env from "react-dotenv";
 
 const customStyles = {
     content: {
@@ -31,14 +32,14 @@ const SearchBar = (props) => {
     let dataResults = search.results;
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=29b70d95a85cb998fa335f41be3c2bc0&language=en-US&page=${pageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${env.API_KEY}&language=en-US&page=${pageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => setSearch(data))
     }, [pageNumber])
 
     useEffect(() => {
         if (isMounted.current) {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=29b70d95a85cb998fa335f41be3c2bc0&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
                 .then((res) => res.json())
                 .then((data) => {
                     setSearch(data)
@@ -53,7 +54,7 @@ const SearchBar = (props) => {
     const fetchMovies = (e) => {
         e.preventDefault()
 
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=29b70d95a85cb998fa335f41be3c2bc0&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
