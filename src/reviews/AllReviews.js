@@ -11,7 +11,7 @@ const AllReviews = (props) => {
     const fetchMovies = async (e) => {
         e.preventDefault()
 
-        await fetch(`${APIURL}${value}`, {
+        await fetch(`${APIURL}reviews/search/${value}`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
