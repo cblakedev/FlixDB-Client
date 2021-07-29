@@ -31,13 +31,28 @@ const EditReviews = (props) => {
             .then((logData) => {
                 console.log(logData);
             })
-    }
+        }
+
+        const handleDelete = (x) => {
+            x.preventDefault();
+            fetch(`https://cb-movie-reviews-server.herokuapp.com/reviews/delete/${id}`, {
+                method: 'DELETE',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${props.token}`
+                })
+            })
+            console.log("Review deleted");
+        }
 
     return (
         <div>
             <Form className="reviewForm" onSubmit={handleSubmit}>
                 <Input id="user-review" value={userReview} label="Edit Review" type="text" onChange={(e) => setUserReview(e.target.value)} />
                 <Button className="homepageButton" id="submitReviewButton" type="submit" >Update Review</Button>
+            </Form>
+            <Form className="deleteForm" onSubmit={handleDelete}>
+                <Button className="homepageButton" id="submitDeleteButton" type="submit" >Delete Review</Button>
             </Form>
         </div>
     );
