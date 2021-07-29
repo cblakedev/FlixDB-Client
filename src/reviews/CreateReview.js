@@ -17,7 +17,7 @@ const CreateReview = (props) => {
 
     console.log(props.selected);
 
-    let title = props.selected.title;
+    let title = props.selected.title.toLowerCase();
     let description = props.selected.overview;
     let imageURL = props.selected.poster_path;
 

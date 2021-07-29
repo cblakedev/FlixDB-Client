@@ -19,23 +19,22 @@ import EditReview from './EditReview';
         const [value, setValue] = useState('');
         const [modalIsOpen, setIsOpen] = useState(false);
         const [selected, setSelected] = useState('');
-            
-        const fetchMovies = () => {
-            console.log(props.token);
+
+        useEffect(() => {
             fetch('https://cb-movie-reviews-server.herokuapp.com/reviews/myreviews', {
                 method: 'GET',
                 headers: new Headers ({
                     'Content-Type': 'application.json',
                     'Authorization': `Bearer ${props.token}`
                 })
-            }).then((res) => res.json())
-            .then((reviewData) => {
-                setValue(reviewData)
-                console.log(value)
             })
-        }
+            .then((res) => res.json())
+            .then((data) => setValue(data))
+            console.log(value)
+            console.log(dataResults)
+        }, [props.token])
 
-        fetchMovies();
+        let dataResults = value; 
 
         const openModal = result =>{
             setIsOpen(result);
@@ -52,16 +51,16 @@ import EditReview from './EditReview';
     return (
         <Container id='homeWrapper'>
             <Row className='resultsWrapper g-0'>
-                {value !== undefined ? value.map(result => {
+                {dataResults !== undefined ? dataResults.map(result => {
                     return (
                         <Col className='resultsCol'>
-                            {result.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${value.imageURL}`} alt='No poster available' /> :
+                            {result.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${result.imageURL}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
-                            <h5>{value.title}</h5>
-                            <p>{value.review}</p>
+                            <h5>{result.title}</h5>
+                            <p>{result.review}</p>
                             <Button 
-                            onMouseEnter={() => {setSelected(value)}}
-                            onClick={() => {setSelected(value); openModal(selected); console.log(selected)}}>Movie Details
+                            onMouseEnter={() => {setSelected(result)}}
+                            onClick={() => {setSelected(result); openModal(selected); console.log(selected)}}>Movie Details
                             </Button>
                         </Col>
                     )
