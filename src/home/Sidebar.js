@@ -60,4 +60,4 @@ const SideBar = (props) => {
     )
 }
 
-export default SideBar
+export default SideBar;
