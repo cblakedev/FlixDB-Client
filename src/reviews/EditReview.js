@@ -11,7 +11,7 @@ import {
 
 const EditReviews = (props) => {
     const [userReview, setUserReview] = useState('');
-    let id = props.selected.review;
+    let id = props.selected.id;
     console.log(props.selected);
 
         const handleSubmit = (e) => {

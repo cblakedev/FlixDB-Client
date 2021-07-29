@@ -51,16 +51,16 @@ import EditReview from './EditReview';
     return (
         <Container id='homeWrapper'>
             <Row className='resultsWrapper g-0'>
-                {dataResults !== undefined ? dataResults.map(result => {
+                {dataResults !== undefined ? dataResults.map(finished => {
                     return (
                         <Col className='resultsCol'>
-                            {result.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${result.imageURL}`} alt='No poster available' /> :
+                            {finished.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${finished.imageURL}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
-                            <h5>{result.title}</h5>
-                            <p>{result.review}</p>
+                            <h5>{finished.title}</h5>
+                            <p>{finished.review}</p>
                             <Button 
-                            onMouseEnter={() => {setSelected(result)}}
-                            onClick={() => {setSelected(result); openModal(selected); console.log(selected)}}>Movie Details
+                            onMouseEnter={() => {setSelected(finished)}}
+                            onClick={() => {setSelected(finished); openModal(selected); console.log(selected)}}>Movie Details
                             </Button>
                         </Col>
                     )
@@ -81,7 +81,7 @@ import EditReview from './EditReview';
             >
                                 
                 <h2>Movie Details</h2>
-                <div>{selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
+                <div>{selected.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.imageURL}`} alt='No poster available' /> :
                 <h2 className='altBackground'>No poster available</h2>}</div>
                 <h4>{selected.title}</h4>
                 <div>
