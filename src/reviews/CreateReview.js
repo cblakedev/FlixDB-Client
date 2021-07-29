@@ -8,6 +8,7 @@ import {
     Label,
     Input
 } from 'reactstrap';
+import APIURL from '../helpers/environment'
 
 const CreateReview = (props) => {
     const [userReview, setUserReview] = useState('');
@@ -23,7 +24,7 @@ const CreateReview = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://cb-movie-reviews-server.herokuapp.com/reviews/create', {
+        fetch(`${APIURL}reviews/create`, {
             method: 'POST',
             body: JSON.stringify({
                 review: {

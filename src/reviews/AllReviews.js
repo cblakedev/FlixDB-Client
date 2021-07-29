@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Row, Col, Container } from 'reactstrap'
 import { Button, Form, FormGroup, Input } from 'reactstrap';
+import APIURL from '../helpers/environment'
 
 const AllReviews = (props) => {
     const [reviewsData, setReviewsData] = useState([])
@@ -10,7 +11,7 @@ const AllReviews = (props) => {
     const fetchMovies = async (e) => {
         e.preventDefault()
 
-        await fetch(`https://cb-movie-reviews-server.herokuapp.com/reviews/search/${value}`, {
+        await fetch(`${APIURL}${value}`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import CreateReview from './CreateReview';
 import EditReview from './EditReview';
+import APIURL from '../helpers/environment'
 
 const MyReviews = (props) => {
     const [ newReview, setNewReview ] = useState('');
@@ -10,7 +11,7 @@ const MyReviews = (props) => {
 
     // let userID = props.
     const fetchMyReviews = () => {
-        fetch(`https://cb-movie-reviews-server.herokuapp.com/review/`, {
+        fetch(`${APIURL}review/`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
