@@ -44,7 +44,7 @@ const SideBar = (props) => {
                     <Switch>
                         <Route exact path='/'><MainHome token={props.token} /></Route>
                         <Route exact path='/myreviews'><MyReviews token={props.token} /></Route>
-                        <Route exact path='/alluserreviews'><AllReviews token={props.token} /></Route>
+                        <Route exact path='/alluserreviews'><AllReviews token={props.token}  /></Route>
                         <Route exact path='/watchlist'><Watchlist token={props.token} /></Route>
 
                     </Switch>

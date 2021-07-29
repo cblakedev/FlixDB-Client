@@ -1,35 +1,25 @@
-import React, {
-    useState
-} from 'react';
+import React from 'react';
 import {
     Button,
-    Form,
-    FormGroup,
-    Label,
-    Input
+    Form
 } from 'reactstrap';
 
-const CreateReview = (props) => {
-    const [userReview, setUserReview] = useState('');
-    // const [ title, setTitle ] = useState('');
-    // const [ description, setDescription ] = useState('');
-    // const [ imageURL, setImageURL ] = useState('');
+const AddWatchList = (props) => {
 
     console.log(props.selected);
 
-    let title = props.selected.title.toLowerCase();
+    let title = props.selected.title;
     let description = props.selected.overview;
     let imageURL = props.selected.poster_path;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://cb-movie-reviews-server.herokuapp.com/reviews/create', {
+        fetch('https://cb-movie-reviews-server.herokuapp.com/watchlist/create', {
             method: 'POST',
             body: JSON.stringify({
-                review: {
+                watchlist: {
                     title: title,
                     description: description,
-                    review: userReview,
                     imageURL: imageURL
                 }
             }),
@@ -42,15 +32,13 @@ const CreateReview = (props) => {
                 console.log(logData);
             })
     }
-
     return (
         <div>
             <Form className="reviewForm" onSubmit={handleSubmit}>
-                <Input id="user-review" value={userReview} label="Write a Review" type="text" onChange={(e) => setUserReview(e.target.value)} />
-                <Button className="homepageButton" id="submitReviewButton" type="submit" >Submit Review</Button>
+                <Button className="homepageButton" id="submitReviewButton" type="submit" >Add to Watchlist</Button>
             </Form>
         </div>
     );
 }
 
-export default CreateReview;
+export default AddWatchList;
