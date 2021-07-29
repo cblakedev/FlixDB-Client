@@ -6,7 +6,7 @@ switch (window.location.hostname) {
         APIURL = 'http://localhost:5000/';
         break;
 
-    case 'cb-movie-reviews-client.herokuapp.com/' :
+    default :
         APIURL = 'https://cb-movie-reviews-server.herokuapp.com/'
       
 }
