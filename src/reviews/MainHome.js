@@ -54,7 +54,7 @@ const SearchBar = (props) => {
     const fetchMovies = (e) => {
         e.preventDefault()
 
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
@@ -99,7 +99,7 @@ const SearchBar = (props) => {
                     return (
                         <Col className='resultsCol'>
                             {result.poster_path != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
-                                <h2 className='altBackground'>No poster available</h2>}
+                                <div className='altBackground'><h2>No Poster Available</h2></div>}
                             <h5>{result.title}</h5>
                             <Button
                                 onMouseEnter={() => { setSelected(result) }}
@@ -126,8 +126,8 @@ const SearchBar = (props) => {
                 >
 
                     <h2>Movie Details</h2>
-                    <div>{selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
-                        <h2 className='altBackground'>No poster available</h2>}</div>
+                    {selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
+                        <div className='altBackground'><h2 >No poster available</h2></div>}
                     <h4>{selected.title}</h4>
                     <div>
                         <p>{selected.overview}</p>

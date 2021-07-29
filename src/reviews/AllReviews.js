@@ -35,12 +35,13 @@ const AllReviews = (props) => {
                     </Form>
                 </Col>
             </Row>
-            {reviewsData.length > 1 ?
+            {reviewsData.length >= 1 ?
                 <div className='reviewsDataWrapper'>
                     <Row className='resultsWrapper g-0'>
                         <Col>
-                            {reviewsData[1].imageURL != null ? <img src={`https://image.tmdb.org/t/p/w300${reviewsData[1].imageURL}`} /> :undefined}
-                            <h2 className='reviewsTitle'>{reviewsData[0].title.toUpperCase()}</h2>
+                            {reviewsData[0].imageURL != null ? <img className='searchedMoviePoster' src={`https://image.tmdb.org/t/p/w300${reviewsData[0].imageURL}`} />
+                                : <div className='reviewsAltPoster'><h2>No Poster Available</h2></div>}
+                            <h2>{reviewsData[0].title.toUpperCase()}</h2>
                             <h5 className='reviewsHeader'>Reviews</h5>
                         </Col>
                     </Row>

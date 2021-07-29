@@ -268,11 +268,16 @@ label + .MuiInput-formControl {
 }
 
 .altBackground {
-  height: 100%;
+  height: 240px;
   width: 154px;
   background-color: rgb(12, 12, 24);
-  padding: 30% 10px 0 10px;
+  padding: 50px 10px 0 10px !important;
   box-shadow: 0 0 15px -3px #00FFF5;
+  
+}
+
+.altBackground h2{
+  color: white;
 }
 
 .previousBtn {
@@ -333,4 +338,22 @@ label + .MuiInput-formControl {
 
  .noResultsWrapper h1{
   font-size: 4rem;
+ }
+
+ .searchedMoviePoster {
+  box-shadow: 0 0 15px -3px #00FFF5;
+  margin-bottom: 15px !important;
+ }
+
+ .reviewsAltPoster {
+   width: 300px;
+   background: black;
+   height: 400px;
+   margin: 0 auto 15px auto !important;
+   text-align: center;
+   box-shadow: 0 0 15px -3px #00FFF5;
+ }
+
+ .reviewsAltPoster h2{
+  padding-top: 25%;
  }
