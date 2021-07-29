@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
 import CreateReview from './CreateReview';
 import env from "react-dotenv";
+import AddWatchList from './AddToWatchList';
 
 const customStyles = {
     content: {
@@ -22,12 +23,8 @@ const SearchBar = (props) => {
     const [pageNumber, setPageNumber] = useState(1);
     const [searchPageNumber, setSearchPageNumber] = useState(1);
     const [selected, setSelected] = useState(null);
-    const [userReview, setUserReview] = useState('')
     const isMounted = useRef(false);
     const [modalIsOpen, setIsOpen] = useState(false);
-    const toggle = () => {
-        setIsOpen(!modalIsOpen)
-    };
 
     let dataResults = search.results;
 
@@ -122,7 +119,6 @@ const SearchBar = (props) => {
                     onRequestClose={closeModal}
                     style={customStyles}
                     contentLabel="Movie Details"
-                    toggle={toggle}
                 >
 
                     <h2>Movie Details</h2>
@@ -133,7 +129,7 @@ const SearchBar = (props) => {
                         <p>{selected.overview}</p>
                     </div>
                     <CreateReview selected={selected} token={props.token} />
-                    <Button className="homepageButton">Add to Watchlist</Button>
+                    <AddWatchList selected={selected} token={props.token} />
                     <Button className="homepageButton" onClick={closeModal}>Close</Button>
                 </Modal>
 
