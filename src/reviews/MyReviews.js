@@ -16,11 +16,15 @@ import EditReview from './EditReview';
     };
     
     const MyReviews = (props) => {
-        const [value, setValue] = useState('');
+        const [value, setValue] = useState([]);
         const [modalIsOpen, setIsOpen] = useState(false);
         const [selected, setSelected] = useState('');
 
         useEffect(() => {
+            fetchMovie()
+        }, [props.token])
+
+        const fetchMovie = () => {
             fetch('https://cb-movie-reviews-server.herokuapp.com/reviews/myreviews', {
                 method: 'GET',
                 headers: new Headers ({
@@ -31,10 +35,10 @@ import EditReview from './EditReview';
             .then((res) => res.json())
             .then((data) => setValue(data))
             console.log(value)
-            console.log(dataResults)
-        }, [props.token])
+            // console.log(dataResults)
+        }
 
-        let dataResults = value; 
+        // let dataResults = value; 
 
         const openModal = result =>{
             setIsOpen(result);
@@ -51,7 +55,7 @@ import EditReview from './EditReview';
     return (
         <Container id='homeWrapper'>
             <Row className='resultsWrapper g-0'>
-                {dataResults !== undefined ? dataResults.map(finished => {
+                {value?.length > 0 ? value.map(finished => {
                     return (
                         <Col className='resultsCol'>
                             {finished.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${finished.imageURL}`} alt='No poster available' /> :
