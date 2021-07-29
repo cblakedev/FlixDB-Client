@@ -3,7 +3,7 @@ import {Row, Col, Container} from 'reactstrap'
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import Modal from 'react-modal';
 import EditReview from './EditReview';
-import APIURL from '../helpers/environment'
+import APIURL from '../helpers/environment';
     
     const customStyles = {
         content: {
@@ -27,11 +27,11 @@ import APIURL from '../helpers/environment'
 
     // let userID = props.
     const fetchMovie = () => {
-        fetch(`${APIURL}review/`, {
+        fetch(`${APIURL}reviews/myreviews`, {
             method: 'GET',
             headers: new Headers ({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': `Bearer ${props.token}`
             })
         })
             .then((res) => res.json())
