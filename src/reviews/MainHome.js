@@ -3,6 +3,7 @@ import { Row, Col, Container } from 'reactstrap'
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
 import CreateReview from './CreateReview';
+import AddWatchList from './AddToWatchList';
 
 const customStyles = {
     content: {
@@ -127,7 +128,7 @@ const SearchBar = (props) => {
                         <p>{selected.overview}</p>
                     </div>
                     <CreateReview selected={selected} token={props.token} />
-                    <Button className="homepageButton">Add to Watchlist</Button>
+                    <AddWatchList selected={selected} token={props.token} />
                     <Button className="homepageButton" onClick={closeModal}>Close</Button>
                 </Modal>
 
