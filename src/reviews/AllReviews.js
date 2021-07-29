@@ -38,7 +38,7 @@ const AllReviews = (props) => {
                 <div className='reviewsDataWrapper'>
                     <Row className='resultsWrapper g-0'>
                         <Col>
-                            <p className='reviewsPoster'>{reviewsData[0].imageURL}</p>
+                            {reviewsData[1].imageURL != null ? <img src={`https://image.tmdb.org/t/p/w300${reviewsData[1].imageURL}`} /> :undefined}
                             <h2 className='reviewsTitle'>{reviewsData[0].title.toUpperCase()}</h2>
                             <h5 className='reviewsHeader'>Reviews</h5>
                         </Col>
