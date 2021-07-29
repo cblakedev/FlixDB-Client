@@ -21,15 +21,13 @@ const SearchBar = (props) => {
     const [pageNumber, setPageNumber] = useState(1);
     const [searchPageNumber, setSearchPageNumber] = useState(1);
     const [selected, setSelected] = useState(null);
-    const [modalIsOpen, setIsOpen] = useState('false');
     const [userReview, setUserReview] = useState('')
     const isMounted = useRef(false);
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState('');
     const toggle = () => {
         setIsOpen(!modalIsOpen)
     };
-    
+
     let dataResults = search.results;
 
     useEffect(() => {
@@ -77,7 +75,7 @@ const SearchBar = (props) => {
 
 
     useEffect(() => {
-        if(modalIsOpen) {
+        if (modalIsOpen) {
             setIsOpen(true)
         }
     }, [modalIsOpen]);
@@ -117,26 +115,26 @@ const SearchBar = (props) => {
             </Row>
             {!!selected && (
 
-            <Modal
-                isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel="Movie Details"
-                toggle={toggle}
-            >
-                                
-                <h2>Movie Details</h2>
-                <div>{selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
-                <h2 className='altBackground'>No poster available</h2>}</div>
-                <h4>{selected.title}</h4>
-                <div>
-                    <p>{selected.overview}</p>
-                </div>
-                <CreateReview selected={selected} token={props.token} />
-                <Button className="homepageButton">Add to Watchlist</Button>
-                <Button className="homepageButton" onClick={closeModal}>Close</Button>
-            </Modal>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Movie Details"
+                    toggle={toggle}
+                >
+
+                    <h2>Movie Details</h2>
+                    <div>{selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
+                        <h2 className='altBackground'>No poster available</h2>}</div>
+                    <h4>{selected.title}</h4>
+                    <div>
+                        <p>{selected.overview}</p>
+                    </div>
+                    <CreateReview selected={selected} token={props.token} />
+                    <Button className="homepageButton">Add to Watchlist</Button>
+                    <Button className="homepageButton" onClick={closeModal}>Close</Button>
+                </Modal>
 
             )}
             {

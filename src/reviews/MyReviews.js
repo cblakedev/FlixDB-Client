@@ -23,45 +23,18 @@ import EditReview from './EditReview';
         const isMounted = useRef(false);
         const [modalIsOpen, setIsOpen] = useState(false);
         const [selected, setSelected] = useState('');
-        const toggle = () => {
-            setIsOpen(!modalIsOpen)
-        };
         
         let dataResults = search.results;
+        
+        // console.log(id);
+        // console.log(props.token);
     
         useEffect(() => {
-            fetch(`'https://cb-movie-reviews-server.herokuapp.com/reviews/${id}`)
+            fetch(`https://cb-movie-reviews-server.herokuapp.com/reviews/myreviews`)
                 .then((res) => res.json())
                 .then((data) => setSearch(data))
-        }, [pageNumber])
-    
-    
-        useEffect(() => {
-            if (isMounted.current) {
-                fetch(`'https://cb-movie-reviews-server.herokuapp.com/reviews/${id}`)
-                    .then((res) => res.json())
-                    .then((data) => {
-                        setSearch(data)
-                        console.log(search.page)
-                    })
-            } else {
-                isMounted.current = true;
-            }
-    
         })
-    
-    
-        const fetchMovies = (e) => {
-            e.preventDefault()
-    
-            fetch(`'https://cb-movie-reviews-server.herokuapp.com/reviews/${id}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setSearch(data)
-                    console.log(search.page)
-                })
-        }
-    
+
         const openModal = result =>{
             setIsOpen(result);
         }
@@ -74,17 +47,11 @@ import EditReview from './EditReview';
             setIsOpen(false);
         }
     
-        useEffect(() => {
-            if(modalIsOpen) {
-                setIsOpen(true)
-            }
-        }, [modalIsOpen]);
-    
     return (
         <Container id='homeWrapper'>
             <Row className='searchField g-0'>
                 <Col className='searchCol'>
-                    <Form onSubmit={fetchMovies}>
+                    <Form>
                         <FormGroup className='searchGroup'>
                             <Input id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
                             <Button type='submit'>Search</Button>
@@ -96,9 +63,10 @@ import EditReview from './EditReview';
                 {dataResults !== undefined ? dataResults.map(result => {
                     return (
                         <Col className='resultsCol'>
-                            {result.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
+                            {result.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${result.imageURL}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
                             <h5>{result.title}</h5>
+                            <p>{result.review}</p>
                             <Button 
                             onMouseEnter={() => {setSelected(result)}}
                             onClick={() => {setSelected(result); openModal(selected); console.log(selected)}}>Movie Details
@@ -108,7 +76,7 @@ import EditReview from './EditReview';
                 })
                     :
                     <Col className='noResultsCol'>
-                        <h1>Search for an available movie!</h1>
+                        <h1>Get started with a new movie review.</h1>
                     </Col>
                 }
             </Row>
@@ -119,7 +87,6 @@ import EditReview from './EditReview';
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Movie Details"
-                toggle={toggle}
             >
                                 
                 <h2>Movie Details</h2>
@@ -129,7 +96,7 @@ import EditReview from './EditReview';
                 <div>
                     <p>{selected.overview}</p>
                 </div>
-                <Button className="homepageButton">Add to Watchlist</Button>
+                <Button className="homepageButton">Edit Review</Button>
                 <Button className="homepageButton" onClick={closeModal}>Close</Button>
             </Modal>
             )}
