@@ -17,23 +17,25 @@ import EditReview from './EditReview';
     
     const MyReviews = (props) => {
         const [value, setValue] = useState('');
-        const [search, setSearch] = useState({});
-        const [pageNumber, setPageNumber] = useState(1);
-        const [searchPageNumber, setSearchPageNumber] = useState(1);
-        const isMounted = useRef(false);
         const [modalIsOpen, setIsOpen] = useState(false);
         const [selected, setSelected] = useState('');
-        
-        let dataResults = search.results;
-        
-        // console.log(id);
-        // console.log(props.token);
-    
-        useEffect(() => {
-            fetch(`https://cb-movie-reviews-server.herokuapp.com/reviews/myreviews`)
-                .then((res) => res.json())
-                .then((data) => setSearch(data))
-        })
+            
+        const fetchMovies = () => {
+            console.log(props.token);
+            fetch('https://cb-movie-reviews-server.herokuapp.com/reviews/myreviews', {
+                method: 'GET',
+                headers: new Headers ({
+                    'Content-Type': 'application.json',
+                    'Authorization': `Bearer ${props.token}`
+                })
+            }).then((res) => res.json())
+            .then((reviewData) => {
+                setValue(reviewData)
+                console.log(value)
+            })
+        }
+
+        fetchMovies();
 
         const openModal = result =>{
             setIsOpen(result);
@@ -49,34 +51,24 @@ import EditReview from './EditReview';
     
     return (
         <Container id='homeWrapper'>
-            <Row className='searchField g-0'>
-                <Col className='searchCol'>
-                    <Form>
-                        <FormGroup className='searchGroup'>
-                            <Input id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
-                            <Button type='submit'>Search</Button>
-                        </FormGroup>
-                    </Form>
-                </Col>
-            </Row>
             <Row className='resultsWrapper g-0'>
-                {dataResults !== undefined ? dataResults.map(result => {
+                {value !== undefined ? value.map(result => {
                     return (
                         <Col className='resultsCol'>
-                            {result.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${result.imageURL}`} alt='No poster available' /> :
+                            {result.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${value.imageURL}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
-                            <h5>{result.title}</h5>
-                            <p>{result.review}</p>
+                            <h5>{value.title}</h5>
+                            <p>{value.review}</p>
                             <Button 
-                            onMouseEnter={() => {setSelected(result)}}
-                            onClick={() => {setSelected(result); openModal(selected); console.log(selected)}}>Movie Details
+                            onMouseEnter={() => {setSelected(value)}}
+                            onClick={() => {setSelected(value); openModal(selected); console.log(selected)}}>Movie Details
                             </Button>
                         </Col>
                     )
                 })
                     :
                     <Col className='noResultsCol'>
-                        <h1>Get started with a new movie review.</h1>
+                        <h1>You have no reviews.</h1>
                     </Col>
                 }
             </Row>
@@ -96,26 +88,10 @@ import EditReview from './EditReview';
                 <div>
                     <p>{selected.overview}</p>
                 </div>
-                <Button className="homepageButton">Edit Review</Button>
+                <EditReview selected={selected} token={props.token} />
                 <Button className="homepageButton" onClick={closeModal}>Close</Button>
             </Modal>
             )}
-            {
-                value !== '' ?
-                    <Row className='g-0'>
-                        <Col className='paginationBtns'>
-                            {searchPageNumber > 1 ? <Button className='previousBtn' onClick={() => setSearchPageNumber(searchPageNumber - 1)}>Previous</Button> : undefined}
-                            {searchPageNumber < search.total_pages ? <Button className='nextBtn' onClick={() => setSearchPageNumber(searchPageNumber + 1)}>Next</Button> : undefined}
-                        </Col>
-                    </Row>
-                    :
-                    <Row className=' g-0'>
-                        <Col>
-                            {pageNumber > 1 ? <Button className='previousBtn' onClick={() => setPageNumber(pageNumber - 1)}>Previous</Button> : undefined}
-                            {pageNumber < search.total_pages ? <Button className='nextBtn' onClick={() => setPageNumber(pageNumber + 1)}>Next</Button> : undefined}
-                        </Col>
-                    </Row>
-            }
         </Container>
     )
 }

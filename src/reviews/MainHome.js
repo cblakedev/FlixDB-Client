@@ -21,24 +21,20 @@ const SearchBar = (props) => {
     const [pageNumber, setPageNumber] = useState(1);
     const [searchPageNumber, setSearchPageNumber] = useState(1);
     const [selected, setSelected] = useState(null);
-    const [userReview, setUserReview] = useState('')
     const isMounted = useRef(false);
     const [modalIsOpen, setIsOpen] = useState(false);
-    const toggle = () => {
-        setIsOpen(!modalIsOpen)
-    };
 
     let dataResults = search.results;
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${window.env.API_KEY}&language=en-US&page=${pageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&page=${pageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => setSearch(data))
     }, [pageNumber])
 
     useEffect(() => {
         if (isMounted.current) {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${window.env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
                 .then((res) => res.json())
                 .then((data) => {
                     setSearch(data)
@@ -53,7 +49,7 @@ const SearchBar = (props) => {
     const fetchMovies = (e) => {
         e.preventDefault()
 
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${window.env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
@@ -121,7 +117,6 @@ const SearchBar = (props) => {
                     onRequestClose={closeModal}
                     style={customStyles}
                     contentLabel="Movie Details"
-                    toggle={toggle}
                 >
 
                     <h2>Movie Details</h2>
