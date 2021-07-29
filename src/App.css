@@ -166,8 +166,8 @@ label + .MuiInput-formControl {
   padding: 0 !important;
 }
 
-.Avatar {
-  position: absolute;
+.avatar {
+  position: relative;
   margin-left: 150px;
 }
 

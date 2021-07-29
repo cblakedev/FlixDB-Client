@@ -1,5 +1,6 @@
 import React, {Component, useState, useEffect } from 'react';
-import {Avatar} from '@material-ui/core' ;
+import 'antd/dist/antd.css';
+import {Avatar} from 'antd' ;
 // import ProfileEdit from '../userprofile/UpdateProfile';
 import { Row, Col, Container } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -10,8 +11,19 @@ import { FaListAlt } from 'react-icons/fa'
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
 import { Button } from 'reactstrap';
+import ProfilePicChanger from './ProfilePicChanger';
+import Pic1 from "./assets/1.jpg";
+import Pic2 from "./assets/2.jpg";
+import ProfileBioChanger from './ProfileBioChanger';
+
+
 
 const SideBar = (props) => {
+    const [profileImage, setprofileImage] = useState('')
+    const handleImageChange = (profileImage) => {
+
+        setprofileImage(profileImage)
+    }
 
 
 
@@ -31,9 +43,11 @@ const SideBar = (props) => {
                 <div className='sidebarContent'>
                     <Col className='userInfo'>
                         <div> User Image</div>
-                        <Avatar size={128}  icon="user" className='Avatar' />
-                        {/* <ProfileEdit /> */}
+                        <Avatar size={64}  icon="user" src={profileImage} className='avatar' />
+                        <ProfilePicChanger handleImageChange={handleImageChange} pic1={Pic1} pic2={Pic2}/>
                         <div>User Bio</div>
+                        <div> I am a movie buff</div>
+                        <ProfileBioChanger/>
                     </Col>
                     <Col className='userOperations'>
                         <ul className='operationsList'>
