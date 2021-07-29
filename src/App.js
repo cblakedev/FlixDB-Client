@@ -2,7 +2,7 @@ import './App.css';
 import Auth from './authorization/Auth';
 import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
-import SideBar from '../src/home/SideBar'
+import SideBar from './home/Sidebar'
 
 
 
