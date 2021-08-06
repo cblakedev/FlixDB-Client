@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container } from 'reactstrap'
+import { Row, Col, Form, FormGroup, Input, Button, Label } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Switch, Link, Route } from 'react-router-dom'
 import { RiHomeWifiFill } from 'react-icons/ri';
@@ -7,14 +7,41 @@ import { VscPreview, VscOpenPreview } from 'react-icons/vsc';
 import { FaListAlt } from 'react-icons/fa'
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
-import { Button } from 'reactstrap';
 import { Avatar } from '@material-ui/core';
 import MyReviews from '../reviews/MyReviews';
 import Watchlist from '../reviews/WatchList';
+import { FaRegUser } from 'react-icons/fa'
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
 
 
 const SideBar = (props) => {
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
 
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <div id='mainWrapper'>
@@ -26,9 +53,47 @@ const SideBar = (props) => {
             <Row className='sidebarWrapper g-0'>
                 <div className='sidebarContent'>
                     <Col className='userInfo'>
-                        <div>User Image</div>
-                        <Avatar size={128} icon='user' className='avatar' />
-                        <div>User Bio</div>
+                        <div>
+                            <Avatar size={400} icon='user' className='avatar' />
+                            {/*  
+                            <div>User Bio</div> */}
+
+                        </div>
+                        <Button type="button" onClick={handleOpen}>
+                            Change Profile Image
+                        </Button>
+                        <Modal
+                            aria-labelledby="transition-modal-title"
+                            aria-describedby="transition-modal-description"
+                            className={classes.modal}
+                            open={open}
+                            onClose={handleClose}
+                            closeAfterTransition
+                            BackdropComponent={Backdrop}
+                            BackdropProps={{
+                                timeout: 500,
+                            }}
+                        >
+                            <Fade in={open}>
+                                <div className={classes.paper}>
+                                    <Form className='sidebarForm' >
+                                        <FormGroup className='sidebarFormGroup'>
+                                            <Label for='fileBtn'> Profile Picture</Label>
+                                            
+                                        </FormGroup>
+                                        <FormGroup className='sidebarFormGroup'>
+                                            <Input id='fileBtn' name='fileBtn' type='file' accept=".png, .jpg, .jpeg" />
+                                        </FormGroup>
+                                        <FormGroup className='sidebarFormGroup'>
+                                            <Label for='bioInput'>Profile Bio</Label>
+                                            <Input id="bioInput" label="Search field" type="textarea" />
+                                        </FormGroup>
+                                        <Button type='submit'>Save Changes</Button>
+                                    </Form>
+                                </div>
+                            </Fade>
+                        </Modal>
+
                     </Col>
                     <Col className='userOperations'>
                         <ul className='operationsList'>
@@ -44,7 +109,7 @@ const SideBar = (props) => {
                     <Switch>
                         <Route exact path='/'><MainHome token={props.token} /></Route>
                         <Route exact path='/myreviews'><MyReviews token={props.token} /></Route>
-                        <Route exact path='/alluserreviews'><AllReviews token={props.token}  /></Route>
+                        <Route exact path='/alluserreviews'><AllReviews token={props.token} /></Route>
                         <Route exact path='/watchlist'><Watchlist token={props.token} /></Route>
 
                     </Switch>

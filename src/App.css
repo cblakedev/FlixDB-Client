@@ -219,6 +219,16 @@ label + .MuiInput-formControl {
   color: white;
   padding-top: 10% !important;
 }
+
+.sidebarFormGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+#fileBtn {
+
+}
+
  /* Main Home */
  #homeWrapper {
   height: 100%;
