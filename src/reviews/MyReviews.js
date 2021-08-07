@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Row, Col, Container} from 'reactstrap'
-import {Button, Form, FormGroup, Input} from 'reactstrap';
+import {Button} from 'reactstrap';
 import Modal from 'react-modal';
 import EditReview from './EditReview';
 import APIURL from '../helpers/environment';

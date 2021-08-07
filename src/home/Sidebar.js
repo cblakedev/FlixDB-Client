@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Form, FormGroup, Input, Button, Label } from 'reactstrap'
+import { Row, Col, Button} from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Switch, Link, Route } from 'react-router-dom'
 import { RiHomeWifiFill } from 'react-icons/ri';
@@ -10,7 +10,6 @@ import AllReviews from '../reviews/AllReviews';
 import { Avatar } from '@material-ui/core';
 import MyReviews from '../reviews/MyReviews';
 import Watchlist from '../reviews/WatchList';
-import { FaRegUser } from 'react-icons/fa'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -33,10 +32,18 @@ const useStyles = makeStyles((theme) => ({
 
 const SideBar = (props) => {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
-    const handleOpen = () => {
+    const handleOpen = async () => {
         setOpen(true);
+        await fetch('profileImg.json', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(imgData => console.log(imgData))
     };
 
     const handleClose = () => {
@@ -62,6 +69,10 @@ const SideBar = (props) => {
                         <Button type="button" onClick={handleOpen}>
                             Change Profile Image
                         </Button>
+                        {/* <FormGroup className='sidebarFormGroup'>
+                            <Label for='bioInput'>Profile Bio</Label>
+                            <Input id="bioInput" label="Search field" type="textarea" />
+                        </FormGroup> */}
                         <Modal
                             aria-labelledby="transition-modal-title"
                             aria-describedby="transition-modal-description"
@@ -76,20 +87,8 @@ const SideBar = (props) => {
                         >
                             <Fade in={open}>
                                 <div className={classes.paper}>
-                                    <Form className='sidebarForm' >
-                                        <FormGroup className='sidebarFormGroup'>
-                                            <Label for='fileBtn'> Profile Picture</Label>
-                                            
-                                        </FormGroup>
-                                        <FormGroup className='sidebarFormGroup'>
-                                            <Input id='fileBtn' name='fileBtn' type='file' accept=".png, .jpg, .jpeg" />
-                                        </FormGroup>
-                                        <FormGroup className='sidebarFormGroup'>
-                                            <Label for='bioInput'>Profile Bio</Label>
-                                            <Input id="bioInput" label="Search field" type="textarea" />
-                                        </FormGroup>
-                                        <Button type='submit'>Save Changes</Button>
-                                    </Form>
+                                    
+                                    <Button>Submit</Button>
                                 </div>
                             </Fade>
                         </Modal>

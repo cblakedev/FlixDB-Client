@@ -1,0 +1,27 @@
+{
+    "images" : [
+        {   "name": "man1",
+            "profileImg_URL": "../public/assets/man1.jpg"
+        },
+        {
+            "name": "man2",
+            "profileImg_URL": "../public/assets/man2.jpg"
+        },
+        {
+            "name": "man3",
+            "profileImg_URL": "../public/assets/man3.jpg"
+        },
+        {
+            "name": "woman1",
+            "profileImg_URL": "../public/assets/woman1.jpg"
+        },
+        {
+            "name": "woman2",
+            "profileImg_URL": "../public/assets/woman2.jpg"
+        },
+        {
+            "name": "woman3",
+            "profileImg_URL": "../public/assets/woman3.jpg"
+        }
+    ]
+}
