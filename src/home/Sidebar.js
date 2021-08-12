@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Button} from 'reactstrap'
+import { Row, Col, Button } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Switch, Link, Route } from 'react-router-dom'
 import { RiHomeWifiFill } from 'react-icons/ri';
@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 const SideBar = (props) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const [imageData, setImageData] = useState({});
 
     const handleOpen = async () => {
         setOpen(true);
@@ -42,8 +44,8 @@ const SideBar = (props) => {
                 'Accept': 'application/json'
             }
         })
-        .then(res => res.json())
-        .then(imgData => console.log(imgData))
+            .then(res => res.json())
+            .then(imgData => setImageData(imgData))
     };
 
     const handleClose = () => {
@@ -73,7 +75,8 @@ const SideBar = (props) => {
                             <Label for='bioInput'>Profile Bio</Label>
                             <Input id="bioInput" label="Search field" type="textarea" />
                         </FormGroup> */}
-                        <Modal
+                        <Modal id='imgModal'
+                            
                             aria-labelledby="transition-modal-title"
                             aria-describedby="transition-modal-description"
                             className={classes.modal}
@@ -86,8 +89,20 @@ const SideBar = (props) => {
                             }}
                         >
                             <Fade in={open}>
-                                <div className={classes.paper}>
-                                    
+                                <div   className={classes.paper}>
+                                    <Row id='profileImgWrapper' >
+                                        {imageData.images ?
+                                            imageData.images.map(image => {
+                                                return (
+                                                    <Col className='proImgCard'>
+                                                        <p>{image.name}</p>
+                                                        <img src={`${image.profileImg_URL}`} alt='Profile Pic' />
+                                                    </Col>
+                                                )
+                                            })
+                                            : undefined
+                                        }
+                                    </Row>
                                     <Button>Submit</Button>
                                 </div>
                             </Fade>

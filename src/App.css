@@ -371,3 +371,24 @@ label + .MuiInput-formControl {
  .reviewsAltPoster h2{
   padding-top: 25%;
  }
+
+ /* Profile Image */
+#imgModal {
+    
+    overflow-y: scroll !important;
+    max-height: 300px !important;
+}
+
+#profileImgWrapper {
+  display: flex !important;
+  flex-direction: column !important;
+ }
+
+ .proImgCard {
+   
+ }
+
+ .proImgCard img {
+   width: 400px !important;
+   height: 400px !important;
+ }
