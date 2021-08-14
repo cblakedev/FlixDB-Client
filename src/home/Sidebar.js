@@ -35,6 +35,7 @@ const SideBar = (props) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [imageData, setImageData] = useState({});
+    const [imageURL, setImageURL] = useState('')
 
     const handleOpen = async () => {
         setOpen(true);
@@ -52,6 +53,15 @@ const SideBar = (props) => {
         setOpen(false);
     };
 
+    const saveURL = (e) => {
+        e.preventDefault();
+
+           
+        setImageURL(e.target.src)
+        console.log(e.target.src)
+        handleClose();
+    }
+    
     return (
         <div id='mainWrapper'>
             <Row className='headerBar g-0'>
@@ -63,7 +73,11 @@ const SideBar = (props) => {
                 <div className='sidebarContent'>
                     <Col className='userInfo'>
                         <div>
-                            <Avatar size={400} icon='user' className='avatar' />
+                            {
+                                imageURL ? <img className='mainAvatar' src={`${imageURL}`} alt='User Avatar' /> :
+                                <img className='mainAvatar' src={`/assets/noAvatar.png`} alt='User Avatar' />
+                            }
+                            
                             {/*  
                             <div>User Bio</div> */}
 
@@ -91,19 +105,21 @@ const SideBar = (props) => {
                             <Fade in={open}>
                                 <div   className={classes.paper}>
                                     <Row id='profileImgWrapper' >
+                                    <h1>Choose an Avatar</h1>
                                         {imageData.images ?
                                             imageData.images.map(image => {
                                                 return (
+                                                    
                                                     <Col className='proImgCard'>
-                                                        <p>{image.name}</p>
-                                                        <img src={`${image.profileImg_URL}`} alt='Profile Pic' />
+                                                        <img onClick={saveURL} src={`${image.profileImg_URL}`} alt='Profile Pic' />
                                                     </Col>
+                                                    
                                                 )
                                             })
                                             : undefined
                                         }
+                                        
                                     </Row>
-                                    <Button>Submit</Button>
                                 </div>
                             </Fade>
                         </Modal>

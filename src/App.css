@@ -163,7 +163,7 @@ label + .MuiInput-formControl {
   top: 0;
   max-width: 350px !important;
   height: 100vh;
-  padding-top: 5% !important;
+  padding-top: 50px !important;
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -174,14 +174,14 @@ label + .MuiInput-formControl {
 }
 
 .userInfo {
-  height: 30% !important;
+  height: 40%;
   flex: none !important;
   padding: 0 !important;
 }
 
 .userOperations {
   position: relative;
-  height: 70% !important;
+  height: 60% !important;
   flex: none !important;
   padding: 0 !important;
 }
@@ -374,21 +374,40 @@ label + .MuiInput-formControl {
 
  /* Profile Image */
 #imgModal {
-    
     overflow-y: scroll !important;
     max-height: 300px !important;
+    max-width: 600px !important;
+    display: block !important;
+    margin: auto;
+}
+
+.mainAvatar {
+  max-height: 175px !important;
+  max-width: 175px !important;
 }
 
 #profileImgWrapper {
   display: flex !important;
-  flex-direction: column !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+ }
+
+#profileImgWrapper h1{
+  width: 100% !important;
+  text-align: center;
  }
 
  .proImgCard {
-   
+   text-align:  center;
+   padding: 0 !important;
  }
 
  .proImgCard img {
-   width: 400px !important;
-   height: 400px !important;
+   width: 100px !important;
+   height: 100px !important;
+   margin: 5px !important;
+ }
+
+ .proImgCard img:hover {
+  box-shadow: 0 0 15px -3px #002daa;
  }
