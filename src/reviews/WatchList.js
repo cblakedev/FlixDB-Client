@@ -55,9 +55,9 @@ import EditWatchlist from './EditWatchList';
     return (
         <Container id='homeWrapper'>
             <Row className='resultsWrapper g-0'>
-                {value?.length > 0 ? value.map(finished => {
+                {value?.length > 0 ? value.map((finished, index) => {
                     return (
-                        <Col className='resultsCol'>
+                        <Col key={index} className='resultsCol'>
                             {finished.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${finished.imageURL}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
                             <h5>{finished.title}</h5>

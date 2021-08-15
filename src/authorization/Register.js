@@ -9,6 +9,7 @@ import {
     Row,
     Container,
 } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 const RegisterSchema = Yup.object().shape({ //yup schema used for field validation. Each property will handle validation corresponding to the Textfield
     username: Yup.string()
@@ -35,7 +36,7 @@ const Register = (props) => { //we pass in props to access other functions from 
         },
         validationSchema: RegisterSchema, //links yup schema to formik
         onSubmit: (e) => { //handles the fetch post request to register a user on form submit
-            fetch(`https://cb-movie-reviews-server.herokuapp.com/user/register`, {
+            fetch(`${APIURL}user/register`, {
                 method: 'POST',
                 body: JSON.stringify({
                     user: {

@@ -7,13 +7,13 @@ import { VscPreview, VscOpenPreview } from 'react-icons/vsc';
 import { FaListAlt } from 'react-icons/fa'
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
-import { Avatar } from '@material-ui/core';
 import MyReviews from '../reviews/MyReviews';
 import Watchlist from '../reviews/WatchList';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import APIURL from '../helpers/environment';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,15 +53,38 @@ const SideBar = (props) => {
         setOpen(false);
     };
 
-    const saveURL = (e) => {
-        e.preventDefault();
-
-           
+    const handleSubmit = async (e) => {
         setImageURL(e.target.src)
-        console.log(e.target.src)
+        
+        await fetch(`${APIURL}user/update/avatar`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                user: {
+                    image: e.target.src
+                }
+            }),
+            headers: new Headers({
+                'Content-Type': "application/json",
+                'Authorization': `Bearer ${props.token}`
+            })
+        })
+
         handleClose();
     }
-    
+
+    useEffect(() => {
+        fetch(`${APIURL}user/userinfo`, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${props.token}`
+            })
+        }).then((response) => response.json()//jsonify the data
+        ).then((data) => {
+            setImageURL(data.image)
+        })
+    })
+
     return (
         <div id='mainWrapper'>
             <Row className='headerBar g-0'>
@@ -75,9 +98,9 @@ const SideBar = (props) => {
                         <div>
                             {
                                 imageURL ? <img className='mainAvatar' src={`${imageURL}`} alt='User Avatar' /> :
-                                <img className='mainAvatar' src={`/assets/noAvatar.png`} alt='User Avatar' />
+                                    <img className='mainAvatar' src={`/assets/noAvatar.png`} alt='User Avatar' />
                             }
-                            
+
                             {/*  
                             <div>User Bio</div> */}
 
@@ -90,7 +113,7 @@ const SideBar = (props) => {
                             <Input id="bioInput" label="Search field" type="textarea" />
                         </FormGroup> */}
                         <Modal id='imgModal'
-                            
+
                             aria-labelledby="transition-modal-title"
                             aria-describedby="transition-modal-description"
                             className={classes.modal}
@@ -103,22 +126,22 @@ const SideBar = (props) => {
                             }}
                         >
                             <Fade in={open}>
-                                <div   className={classes.paper}>
+                                <div className={classes.paper}>
                                     <Row id='profileImgWrapper' >
-                                    <h1>Choose an Avatar</h1>
+                                        <h1>Choose an Avatar</h1>
                                         {imageData.images ?
-                                            imageData.images.map(image => {
+                                            imageData.images.map((image, index) => {
                                                 return (
-                                                    
+
                                                     <Col className='proImgCard'>
-                                                        <img onClick={saveURL} src={`${image.profileImg_URL}`} alt='Profile Pic' />
+                                                        <img key={index} onClick={handleSubmit} src={`${image.profileImg_URL}`} alt='Profile Pic' />
                                                     </Col>
-                                                    
+
                                                 )
                                             })
                                             : undefined
                                         }
-                                        
+
                                     </Row>
                                 </div>
                             </Fade>

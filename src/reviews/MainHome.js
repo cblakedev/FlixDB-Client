@@ -92,9 +92,9 @@ const SearchBar = (props) => {
                 </Col>
             </Row>
             <Row className='resultsWrapper g-0'>
-                {dataResults !== undefined ? dataResults.map(result => {
+                {dataResults !== undefined ? dataResults.map((result, index) => {
                     return (
-                        <Col className='resultsCol'>
+                        <Col key={index} className='resultsCol'>
                             {result.poster_path != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
                                 <div className='altBackground'><h2>No Poster Available</h2></div>}
                             <h5>{result.title}</h5>
