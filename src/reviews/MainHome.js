@@ -29,14 +29,14 @@ const SearchBar = (props) => {
     let dataResults = search.results;
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&page=${pageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${env.API_KEY}&language=en-US&page=${pageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => setSearch(data))
     }, [pageNumber])
 
     useEffect(() => {
         if (isMounted.current) {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
                 .then((res) => res.json())
                 .then((data) => {
                     setSearch(data)
@@ -51,7 +51,7 @@ const SearchBar = (props) => {
     const fetchMovies = (e) => {
         e.preventDefault()
 
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=43122e14f57e2e78d36d0e4fb31b7c0a&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${env.API_KEY}&language=en-US&query=${value}&page=${searchPageNumber}&include_adult=false`)
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
@@ -92,9 +92,9 @@ const SearchBar = (props) => {
                 </Col>
             </Row>
             <Row className='resultsWrapper g-0'>
-                {dataResults !== undefined ? dataResults.map(result => {
+                {dataResults !== undefined ? dataResults.map((result, index) => {
                     return (
-                        <Col className='resultsCol'>
+                        <Col key={index} className='resultsCol'>
                             {result.poster_path != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
                                 <div className='altBackground'><h2>No Poster Available</h2></div>}
                             <h5>{result.title}</h5>

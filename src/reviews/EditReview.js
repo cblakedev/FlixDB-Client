@@ -4,8 +4,6 @@ import React, {
 import {
     Button,
     Form,
-    FormGroup,
-    Label,
     Input
 } from 'reactstrap';
 
