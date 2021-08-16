@@ -14,8 +14,6 @@ const CreateReview = (props) => {
     // const [ description, setDescription ] = useState('');
     // const [ imageURL, setImageURL ] = useState('');
 
-    console.log(props.selected);
-
     let title = props.selected.title.toLowerCase();
     let description = props.selected.overview;
     let imageURL = props.selected.poster_path;
@@ -37,9 +35,7 @@ const CreateReview = (props) => {
                 'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => res.json())
-            .then((logData) => {
-                console.log(logData);
-            })
+            
     }
 
     return (

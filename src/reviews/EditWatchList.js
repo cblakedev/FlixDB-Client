@@ -3,14 +3,14 @@ import {
     Button,
     Form
 } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 const EditWatchList = (props) => {
     let id = props.selected.id;
-    console.log(props.selected);
 
         const handleDelete = (x) => {
             x.preventDefault();
-            fetch(`https://cb-movie-reviews-server.herokuapp.com/watchlist/${id}`, {
+            fetch(`${APIURL}watchlist/${id}`, {
                 method: 'DELETE',
                 headers: new Headers({
                     'Content-Type': 'application/json',

@@ -3,6 +3,7 @@ import {Row, Col, Container} from 'reactstrap'
 import {Button} from 'reactstrap';
 import Modal from 'react-modal';
 import EditWatchlist from './EditWatchList';
+import APIURL from '../helpers/environment';
     
     const customStyles = {
         content: {
@@ -25,7 +26,7 @@ import EditWatchlist from './EditWatchList';
         }, [props.token])
 
         const fetchMovie = () => {
-            fetch('https://cb-movie-reviews-server.herokuapp.com/watchlist/mine', {
+            fetch(`${APIURL}watchlist/mine`, {
                 method: 'GET',
                 headers: new Headers ({
                     'Content-Type': 'application.json',
@@ -58,13 +59,13 @@ import EditWatchlist from './EditWatchList';
                 {value?.length > 0 ? value.map((finished, index) => {
                     return (
                         <Col key={index} className='resultsCol'>
-                            {finished.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${finished.imageURL}`} alt='No poster available' /> :
+                            {finished.imageURL != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${finished.imageURL}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
                             <h5>{finished.title}</h5>
                             <p>{finished.review}</p>
                             <Button 
                             onMouseEnter={() => {setSelected(finished)}}
-                            onClick={() => {setSelected(finished); openModal(selected); console.log(selected)}}>Movie Details
+                            onClick={() => {setSelected(finished); openModal(selected)}}>Movie Details
                             </Button>
                         </Col>
                     )

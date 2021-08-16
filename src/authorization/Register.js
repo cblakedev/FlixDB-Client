@@ -51,7 +51,6 @@ const Register = (props) => { //we pass in props to access other functions from 
                 })
             }).then((response) => response.json()
             ).then((data) => {
-                console.log(data)
                 props.updatetoken(data.sessionToken)
             })
         },

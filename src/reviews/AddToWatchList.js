@@ -3,18 +3,16 @@ import {
     Button,
     Form
 } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 const AddWatchList = (props) => {
-
-    console.log(props.selected);
-
     let title = props.selected.title;
     let description = props.selected.overview;
     let imageURL = props.selected.poster_path;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('https://cb-movie-reviews-server.herokuapp.com/watchlist/create', {
+        fetch(`${APIURL}watchlist/create`, {
             method: 'POST',
             body: JSON.stringify({
                 watchlist: {
@@ -29,7 +27,7 @@ const AddWatchList = (props) => {
             })
         }).then((res) => res.json())
             .then((logData) => {
-                console.log(logData);
+
             })
     }
     return (

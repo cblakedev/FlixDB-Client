@@ -40,7 +40,6 @@ const SearchBar = (props) => {
                 .then((res) => res.json())
                 .then((data) => {
                     setSearch(data)
-                    console.log(search.page)
                 })
         } else {
             isMounted.current = true;
@@ -55,7 +54,6 @@ const SearchBar = (props) => {
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
-                console.log(search.page)
             })
     }
 

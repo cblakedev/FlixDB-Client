@@ -6,15 +6,15 @@ import {
     Form,
     Input
 } from 'reactstrap';
+import APIURL from '../helpers/environment';
 
 const EditReviews = (props) => {
     const [userReview, setUserReview] = useState('');
     let id = props.selected.id;
-    console.log(props.selected);
 
         const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`https://cb-movie-reviews-server.herokuapp.com/reviews/${id}`, {
+        fetch(`${APIURL}reviews/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 review: {
@@ -27,13 +27,13 @@ const EditReviews = (props) => {
             })
         }).then((res) => res.json())
             .then((logData) => {
-                console.log(logData);
             })
         }
 
         const handleDelete = (x) => {
             x.preventDefault();
-            fetch(`https://cb-movie-reviews-server.herokuapp.com/reviews/delete/${id}`, {
+
+            fetch(`${APIURL}reviews/delete/${id}`, {
                 method: 'DELETE',
                 headers: new Headers({
                     'Content-Type': 'application/json',
