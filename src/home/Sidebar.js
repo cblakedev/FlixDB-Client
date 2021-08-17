@@ -5,6 +5,7 @@ import { Switch, Link, Route } from 'react-router-dom'
 import { RiHomeWifiFill } from 'react-icons/ri';
 import { VscPreview, VscOpenPreview } from 'react-icons/vsc';
 import { FaListAlt } from 'react-icons/fa'
+import {MdModeEdit} from 'react-icons/md'
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
 import MyReviews from '../reviews/MyReviews';
@@ -89,7 +90,7 @@ const SideBar = (props) => {
         <div id='mainWrapper'>
             <Row className='headerBar g-0'>
                 <Col>
-                    <h2>Movie Reviews</h2>
+                    <h2>Movie Reviews App</h2>
                 </Col>
             </Row>
             <Row className='sidebarWrapper g-0'>
@@ -105,8 +106,8 @@ const SideBar = (props) => {
                             <div>User Bio</div> */}
 
                         </div>
-                        <Button type="button" onClick={handleOpen}>
-                            Change Profile Image
+                        <Button className='avatarEditBtn' type="button" onClick={handleOpen}>
+                           <MdModeEdit/> Edit
                         </Button>
                         {/* <FormGroup className='sidebarFormGroup'>
                             <Label for='bioInput'>Profile Bio</Label>
@@ -150,7 +151,7 @@ const SideBar = (props) => {
                     </Col>
                     <Col className='userOperations'>
                         <ul className='operationsList'>
-                            <li><Link to='/'><RiHomeWifiFill /> Home</Link></li>
+                            <li><Link to='/'><RiHomeWifiFill />  Home</Link></li>
                             <li><Link to='/myreviews'><VscPreview /> My Reviews</Link></li>
                             <li><Link to='/alluserreviews'><VscOpenPreview /> Movie Reviews</Link></li>
                             <li><Link to='/watchlist'><FaListAlt /> Watch List</Link></li>

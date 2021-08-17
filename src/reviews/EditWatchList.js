@@ -17,7 +17,8 @@ const EditWatchList = (props) => {
                     'Authorization': `Bearer ${props.token}`
                 })
             })
-            console.log("Review deleted");
+            console.log("Movie removed from watchlist");
+            props.closeModal();
         }
 
     return (

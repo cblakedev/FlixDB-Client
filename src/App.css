@@ -157,13 +157,19 @@ label + .MuiInput-formControl {
   z-index: 2;
 }
 
+.headerBar h2 {
+  font-family: 'Arvo';
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
 .sidebarContent {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   max-width: 350px !important;
   height: 100vh;
-  padding-top: 50px !important;
+  padding-top: 75px !important;
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -206,11 +212,16 @@ label + .MuiInput-formControl {
   padding: 0 20% 0 30%;
   margin: 0;
   text-align: left;
+  font-size: 17px !important;
 }
 
 .operationsList a{
   text-decoration: none;
   color: white;
+ }
+
+ .operationsList svg {
+   margin: 0 20px 4px 0 !important;
  }
 
  .sidebarRoute {
@@ -225,9 +236,6 @@ label + .MuiInput-formControl {
   flex-direction: column;
 }
 
-#fileBtn {
-
-}
 
  /* Main Home */
  #homeWrapper {
@@ -384,6 +392,14 @@ label + .MuiInput-formControl {
 .mainAvatar {
   max-height: 175px !important;
   max-width: 175px !important;
+  border-radius: 50%;
+  box-shadow: 0 0 15px -2px #00FFF5;
+}
+
+.avatarEditBtn {
+  margin-top: 8px !important;
+  font-size: 12px !important;
+  padding: 5px !important;
 }
 
 #profileImgWrapper {
@@ -411,3 +427,49 @@ label + .MuiInput-formControl {
  .proImgCard img:hover {
   box-shadow: 0 0 15px -3px #002daa;
  }
+
+
+ /* Create Review */
+ #createReviewModal {
+  max-width: 500px !important;
+  max-height: 75vh !important;
+  overflow-y: scroll !important;
+  text-align: center;
+ }
+
+ .modalOverview {
+   text-align: left;
+ }
+
+.reviewForm {
+  text-align: center;
+}
+
+.closeModalBtn {
+  text-align: center;
+}
+
+#btmModalBtns {
+  padding-top: 15px !important;
+}
+
+#submitReviewButton {
+  margin-top: 10px !important;
+}
+
+/* Edit Review */
+#editReviewModal {
+  max-width: 500px !important;
+  max-height: 75vh !important;
+  overflow-y: scroll !important;
+  text-align: center;
+}
+
+
+/* Watchlist */
+#watchListModal {
+   max-width: 500px !important;
+  max-height: 75vh !important;
+  overflow-y: scroll !important;
+  text-align: center;
+}

@@ -77,7 +77,8 @@ import APIURL from '../helpers/environment';
                 }
             </Row>
             {!!selected && (
-            <Modal
+            <Modal 
+                id='watchListModal'
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
@@ -92,7 +93,7 @@ import APIURL from '../helpers/environment';
                 <div>
                     <p>{selected.overview}</p>
                 </div>
-                <EditWatchlist selected={selected} token={props.token} />
+                <EditWatchlist selected={selected} closeModal={closeModal} token={props.token} />
                 <Button className="homepageButton" onClick={closeModal}>Close</Button>
             </Modal>
             )}
