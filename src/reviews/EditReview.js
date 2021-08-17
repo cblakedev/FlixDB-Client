@@ -12,7 +12,7 @@ const EditReviews = (props) => {
     const [userReview, setUserReview] = useState('');
     let id = props.selected.id;
 
-        const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         fetch(`${APIURL}reviews/${id}`, {
             method: 'PUT',
@@ -28,25 +28,28 @@ const EditReviews = (props) => {
         }).then((res) => res.json())
             .then((logData) => {
             })
-        }
 
-        const handleDelete = (x) => {
-            x.preventDefault();
+        props.closeModal();
+    }
 
-            fetch(`${APIURL}reviews/delete/${id}`, {
-                method: 'DELETE',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${props.token}`
-                })
+    const handleDelete = (e) => {
+
+        fetch(`${APIURL}reviews/delete/${id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${props.token}`
             })
-            console.log("Review deleted");
-        }
+        })
+        console.log("Review deleted");
+
+        props.closeModal();
+    }
 
     return (
         <div>
             <Form className="reviewForm" onSubmit={handleSubmit}>
-                <Input id="user-review" value={userReview} label="Edit Review" type="text" onChange={(e) => setUserReview(e.target.value)} />
+                <Input required id="user-review" value={userReview} label="Edit Review" type="textarea" onChange={(e) => setUserReview(e.target.value)} />
                 <Button className="homepageButton" id="submitReviewButton" type="submit" >Update Review</Button>
             </Form>
             <Form className="deleteForm" onSubmit={handleDelete}>

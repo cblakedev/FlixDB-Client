@@ -98,7 +98,7 @@ const SearchBar = (props) => {
                             <h5>{result.title}</h5>
                             <Button
                                 onMouseEnter={() => { setSelected(result) }}
-                                onClick={() => { setSelected(result); openModal(selected); console.log(selected) }}>Movie Details
+                                onClick={() => { setSelected(result); openModal(selected) }}>Movie Details
                             </Button>
                         </Col>
                     )
@@ -112,6 +112,7 @@ const SearchBar = (props) => {
             {!!selected && (
 
                 <Modal
+                    id='createReviewModal'
                     isOpen={modalIsOpen}
                     onAfterOpen={afterOpenModal}
                     onRequestClose={closeModal}
@@ -123,12 +124,22 @@ const SearchBar = (props) => {
                     {selected.poster_path != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.poster_path}`} alt='No poster available' /> :
                         <div className='altBackground'><h2 >No poster available</h2></div>}
                     <h4>{selected.title}</h4>
-                    <div>
+                    <div className='modalOverview'>
                         <p>{selected.overview}</p>
                     </div>
-                    <CreateReview selected={selected} token={props.token} />
-                    <AddWatchList selected={selected} token={props.token} />
-                    <Button className="homepageButton" onClick={closeModal}>Close</Button>
+                    <Row>
+                        <Col>
+                            <CreateReview selected={selected} closeModal={closeModal} token={props.token} />
+                        </Col>
+                    </Row>
+                    <Row id='btmModalBtns'>
+                        <Col>
+                            <AddWatchList selected={selected} closeModal={closeModal} token={props.token} />
+                        </Col>
+                        <Col className='closeModalBtn'>
+                            <Button className="homepageButton" onClick={closeModal}>Close</Button>
+                        </Col>
+                    </Row>
                 </Modal>
 
             )}

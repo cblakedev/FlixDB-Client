@@ -58,7 +58,7 @@ import APIURL from '../helpers/environment';
                         <Col key={index} className='resultsCol'>
                             {finished.imageURL != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${finished.imageURL}`} alt='No poster available' /> :
                                 <h2 className='altBackground'>No poster available</h2>}
-                            <h5>{finished.title}</h5>
+                            <h5>{finished.title.toUpperCase()}</h5>
                             <p>{finished.review}</p>
                             <Button 
                             onMouseEnter={() => {setSelected(finished)}}
@@ -74,7 +74,8 @@ import APIURL from '../helpers/environment';
                 }
             </Row>
             {!!selected && (
-            <Modal
+            <Modal 
+                id='editReviewModal'
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
@@ -85,11 +86,11 @@ import APIURL from '../helpers/environment';
                 <h2>Movie Details</h2>
                 <div>{selected.imageURL != null ? <img src={`https://image.tmdb.org/t/p/w154${selected.imageURL}`} alt='No poster available' /> :
                 <h2 className='altBackground'>No poster available</h2>}</div>
-                <h4>{selected.title}</h4>
+                <h4>{selected.title.toUpperCase()}</h4>
                 <div>
                     <p>{selected.overview}</p>
                 </div>
-                <EditReview selected={selected} token={props.token} />
+                <EditReview selected={selected} closeModal={closeModal} token={props.token} />
                 <Button className="homepageButton" onClick={closeModal}>Close</Button>
             </Modal>
             )}

@@ -18,6 +18,7 @@ const CreateReview = (props) => {
     let description = props.selected.overview;
     let imageURL = props.selected.poster_path;
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch(`${APIURL}reviews/create`, {
@@ -35,13 +36,15 @@ const CreateReview = (props) => {
                 'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => res.json())
+
+        props.closeModal()
             
     }
 
     return (
         <div>
             <Form className="reviewForm" onSubmit={handleSubmit}>
-                <Input id="user-review" value={userReview} label="Write a Review" type="text" onChange={(e) => setUserReview(e.target.value)} />
+                <Input required type='textarea' id="user-review" value={userReview} label="Write a Review" onChange={(e) => setUserReview(e.target.value)}/>
                 <Button className="homepageButton" id="submitReviewButton" type="submit" >Submit Review</Button>
             </Form>
         </div>

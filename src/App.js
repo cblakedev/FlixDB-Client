@@ -3,11 +3,18 @@ import Auth from './authorization/Auth';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
 import SideBar from './home/Sidebar'
-
-
+import WebFont from 'webfontloader';
 
 function App() {
   const [sessionToken, setSessionToken] = useState('');
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Arvo']
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {

@@ -26,14 +26,13 @@ const AddWatchList = (props) => {
                 'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => res.json())
-            .then((logData) => {
-
-            })
+        
+        props.closeModal();
     }
     return (
         <div>
             <Form className="reviewForm" onSubmit={handleSubmit}>
-                <Button className="homepageButton" id="submitReviewButton" type="submit" >Add to Watchlist</Button>
+                <Button className="homepageButton" id="submitWLButton" type="submit" >Add to Watchlist</Button>
             </Form>
         </div>
     );
