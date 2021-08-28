@@ -41,14 +41,17 @@
 #authWrapper {
   position: relative;
   top: 10%;
-  width: 350px;
+  max-width: 350px;
   margin: auto;
   box-shadow: 0 0 10px grey;
   background-color: white;
+  border-radius: 5px;
 }
 
 .authTabs {
   background-color: #393E46;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .loginTab {
@@ -140,6 +143,19 @@ label + .MuiInput-formControl {
   margin: 0;
   width: 100%;
 }
+
+.navIcon {
+  position: absolute;
+  left: 7px;
+  font-size: 2em;
+  padding: 2px;
+  display: none;
+  
+}
+
+.toggleContent {
+    display: none;
+  }
 
 .avatar {
   position: relative;
@@ -472,4 +488,36 @@ label + .MuiInput-formControl {
   max-height: 75vh !important;
   overflow-y: scroll !important;
   text-align: center;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 750px) {
+  .navIcon {
+    display: block;
+  }
+  
+  .sidebarContent {
+    position: fixed !important;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .navIcon {
+    display: block;
+  }
+
+  .toggleContent {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 1001px) {
+  .toggleContent {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 1201px) {
+  .toggleContent {
+    display: flex;
+  }
 }

@@ -5,6 +5,7 @@ import { Switch, Link, Route } from 'react-router-dom'
 import { RiHomeWifiFill } from 'react-icons/ri';
 import { VscPreview, VscOpenPreview } from 'react-icons/vsc';
 import { FaListAlt } from 'react-icons/fa'
+import { GiHamburgerMenu } from 'react-icons/gi'
 import {MdModeEdit} from 'react-icons/md'
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SideBar = (props) => {
     const classes = useStyles();
+    const[sideOpen, setSideOpen] = useState(false);
     const [open, setOpen] = useState(false);
     const [imageData, setImageData] = useState({});
     const [imageURL, setImageURL] = useState('')
@@ -69,8 +71,23 @@ const SideBar = (props) => {
                 'Authorization': `Bearer ${props.token}`
             })
         })
-
         handleClose();
+    }
+
+    const handleCollapse = (e) => {
+        e.preventDefault()
+       let sidebarContent = document.querySelector('.sidebarContent')
+
+       if (sideOpen){
+        sidebarContent.classList.add('toggleContent');
+        console.log('hide');
+        setSideOpen(false);
+       } else {
+        sidebarContent.classList.remove('toggleContent');
+        setSideOpen(true);
+        console.log('show');
+       }
+       
     }
 
     useEffect(() => {
@@ -90,11 +107,12 @@ const SideBar = (props) => {
         <div id='mainWrapper'>
             <Row className='headerBar g-0'>
                 <Col>
+                    <GiHamburgerMenu type='button' className='navIcon' onClick={handleCollapse}/>
                     <h2>Movie Reviews App</h2>
                 </Col>
             </Row>
             <Row className='sidebarWrapper g-0'>
-                <div className='sidebarContent'>
+                <div className='sidebarContent toggleContent'>
                     <Col className='userInfo'>
                         <div>
                             {
@@ -137,12 +155,10 @@ const SideBar = (props) => {
                                                     <Col className='proImgCard'>
                                                         <img key={index} onClick={handleSubmit} src={`${image.profileImg_URL}`} alt='Profile Pic' />
                                                     </Col>
-
                                                 )
                                             })
                                             : undefined
                                         }
-
                                     </Row>
                                 </div>
                             </Fade>
