@@ -219,7 +219,12 @@ label + .MuiInput-formControl {
   transition: left .3s linear !important;
 }
 
-
+.jss7 {
+  padding: 10px !important;
+  border-radius: 5px !important;
+  border: 1px solid rgb(204, 204, 204) !important;
+  box-shadow: none !important;
+}
 
 .userInfo {
   height: 40%;
