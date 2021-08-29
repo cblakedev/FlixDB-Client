@@ -9,11 +9,12 @@ import {
 import APIURL from '../helpers/environment';
 
 const EditReviews = (props) => {
-    const [userReview, setUserReview] = useState('');
+    const [userReview, setUserReview] = useState(props.review);
     let id = props.selected.id;
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         fetch(`${APIURL}reviews/${id}`, {
             method: 'PUT',
             body: JSON.stringify({

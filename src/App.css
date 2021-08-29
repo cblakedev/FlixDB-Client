@@ -48,6 +48,10 @@
   border-radius: 5px;
 }
 
+.MuiPaper-root {
+  border-radius: 5px;
+}
+
 .authTabs {
   background-color: #393E46;
   border-top-left-radius: 5px;
@@ -149,12 +153,16 @@ label + .MuiInput-formControl {
   left: 7px;
   font-size: 2em;
   padding: 2px;
-  display: none;
-  
+  display: none; 
+}
+
+.navIcon:hover {
+  color: #00FFF5;
 }
 
 .toggleContent {
-    display: none;
+    left: -350px !important;
+    transition: left .3s linear !important;
   }
 
 .avatar {
@@ -179,9 +187,18 @@ label + .MuiInput-formControl {
   margin-bottom: 0;
 }
 
-.sidebarContent {
+.headerBar a {
+  text-decoration: none !important;
+  color: white;
+  display: inline-block;
+}
+
+.headerBar a:hover {
+  color: #00FFF5;
+}
+
+#sidebarContent {
   position: -webkit-sticky;
-  position: sticky;
   top: 0;
   max-width: 350px !important;
   height: 100vh;
@@ -193,7 +210,10 @@ label + .MuiInput-formControl {
   color: white;
   box-shadow: 0 0 15px -2px #00FFF5;
   border-right: 1px solid grey;
+  transition: left .3s linear !important;
 }
+
+
 
 .userInfo {
   height: 40%;
@@ -221,11 +241,11 @@ label + .MuiInput-formControl {
 }
 
 .operationsList a:hover {
- color: #00ADB5 !important;
+ color: #00FFF5 !important;
 }
 
 .operationsList {
-  padding: 0 20% 0 30%;
+  padding: 0 0 0 75px;
   margin: 0;
   text-align: left;
   font-size: 17px !important;
@@ -244,7 +264,7 @@ label + .MuiInput-formControl {
   flex: 1 !important;
   background-color: #222831;
   color: white;
-  padding-top: 10% !important;
+  padding-top: 50px !important;
 }
 
 .sidebarFormGroup {
@@ -256,6 +276,7 @@ label + .MuiInput-formControl {
  /* Main Home */
  #homeWrapper {
   height: 100%;
+  padding: 50px 0;
 }
 
 .searchCol {
@@ -264,6 +285,20 @@ label + .MuiInput-formControl {
 
 .searchGroup {
   display: flex;
+}
+
+#standard-search {
+  border-top-left-radius: .25rem !important;
+  border-bottom-left-radius: .25rem !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+#searchBtn {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: .25rem !important;
+  border-top-right-radius: .25rem !important;
 }
 
 .resultsWrapper {
@@ -290,7 +325,6 @@ label + .MuiInput-formControl {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 40vh;
 }
 
 .noResultsCol h1 {
@@ -371,7 +405,6 @@ label + .MuiInput-formControl {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  height: 40vh !important;
  }
 
  .noResultsWrapper h1{
@@ -402,7 +435,18 @@ label + .MuiInput-formControl {
     max-height: 300px !important;
     max-width: 600px !important;
     display: block !important;
-    margin: auto;
+    margin: auto; 
+}
+
+.makeStyles-paper-8 {
+    padding: 10px !important;
+    border-radius: 5px;
+    border: 1px solid rgb(204, 204, 204) !important;
+    box-shadow: none !important;
+}
+
+.MuiBackdrop-root {
+  background-color: rgba(255, 255, 255, 0.75) !important;
 }
 
 .mainAvatar {
@@ -422,6 +466,7 @@ label + .MuiInput-formControl {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center !important;
+  --bs-gutter-x: 0 !important;
  }
 
 #profileImgWrapper h1{
@@ -438,6 +483,7 @@ label + .MuiInput-formControl {
    width: 100px !important;
    height: 100px !important;
    margin: 5px !important;
+   border-radius: 30px;
  }
 
  .proImgCard img:hover {
@@ -481,6 +527,17 @@ label + .MuiInput-formControl {
   text-align: center;
 }
 
+#submitReviewButton {
+  margin-bottom: 7px !important;
+}
+
+.myReviewDescription {
+  text-align: left;
+}
+
+#user-review {
+  height: 100px;
+}
 
 /* Watchlist */
 #watchListModal {
@@ -490,34 +547,68 @@ label + .MuiInput-formControl {
   text-align: center;
 }
 
+#submitDeleteButton {
+  margin-bottom: 7px !important;
+}
+
+.watchlistDescription p{
+  text-align: left;
+}
 
 /* MEDIA QUERIES */
+
+@media only screen and (max-width: 400px) {
+  .headerBar h2 {
+    padding-left: 40px;
+  }
+}
 
 @media only screen and (max-width: 750px) {
   .navIcon {
     display: block;
   }
   
-  .sidebarContent {
+  #sidebarContent {
     position: fixed !important;
+    left: 0;
+  }
+
+  .searchCol {
+    margin: 20px 10px;
   }
 }
+
 @media only screen and (max-width: 1000px) {
   .navIcon {
     display: block;
   }
 
-  .toggleContent {
-    display: none;
+  #sidebarContent {
+    position: fixed !important;
+    left: 0;
+  }
+
+  .paddingFix {
+    padding: 100px 0 28em 0 !important;
   }
 }
+
 @media only screen and (max-width: 1200px) and (min-width: 1001px) {
   .toggleContent {
     display: flex;
   }
+
+  #sidebarContent {
+    position: sticky !important;
+  }
 }
+
 @media only screen and (min-width: 1201px) {
   .toggleContent {
     display: flex;
+  }
+
+  #sidebarContent {
+    position: sticky !important;
   }
 }

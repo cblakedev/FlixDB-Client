@@ -29,8 +29,8 @@ const AllReviews = (props) => {
                 <Col className='searchCol'>
                     <Form onSubmit={fetchMovies}>
                         <FormGroup className='searchGroup'>
-                            <Input id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
-                            <Button type='submit'>Search</Button>
+                            <Input require id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
+                            <Button id='searchBtn' type='submit' >Search</Button>
                         </FormGroup>
                     </Form>
                 </Col>
@@ -59,7 +59,7 @@ const AllReviews = (props) => {
                 </div>
                 :
                 <Row className=' g-0'>
-                    <Col className='noResultsWrapper'>
+                    <Col className='noResultsWrapper paddingFix'>
                         <h1> Search for a movie and see what people are saying!</h1>
                     </Col>
                 </Row>

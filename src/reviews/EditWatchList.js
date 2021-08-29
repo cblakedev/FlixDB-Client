@@ -8,18 +8,18 @@ import APIURL from '../helpers/environment';
 const EditWatchList = (props) => {
     let id = props.selected.id;
 
-        const handleDelete = (x) => {
-            x.preventDefault();
-            fetch(`${APIURL}watchlist/${id}`, {
-                method: 'DELETE',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${props.token}`
-                })
+    const handleDelete = (e) => {
+        e.preventDefault();
+        fetch(`${APIURL}watchlist/${id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${props.token}`
             })
-            console.log("Movie removed from watchlist");
-            props.closeModal();
-        }
+        })
+        console.log("Movie removed from watchlist");
+        props.closeModal();
+    }
 
     return (
         <div>

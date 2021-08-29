@@ -54,6 +54,7 @@ const SearchBar = (props) => {
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
+                console.log(data)
             })
     }
 
@@ -61,21 +62,9 @@ const SearchBar = (props) => {
         setIsOpen(result);
     }
 
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-    }
-
     const closeModal = result => {
         setIsOpen(false);
     }
-
-
-    useEffect(() => {
-        if (modalIsOpen) {
-            setIsOpen(true)
-        }
-    }, [modalIsOpen]);
-
 
     return (
         <Container id='homeWrapper'>
@@ -83,14 +72,14 @@ const SearchBar = (props) => {
                 <Col className='searchCol'>
                     <Form onSubmit={fetchMovies}>
                         <FormGroup className='searchGroup'>
-                            <Input id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
-                            <Button type='submit'>Search</Button>
+                            <Input required id="standard-search" value={value} label="Search field" type="text" onChange={(e) => setValue(e.target.value)} />
+                            <Button type='submit' id='searchBtn'>Search</Button>
                         </FormGroup>
                     </Form>
                 </Col>
             </Row>
             <Row className='resultsWrapper g-0'>
-                {dataResults !== undefined ? dataResults.map((result, index) => {
+                {search.total_results ? dataResults.map((result, index) => {
                     return (
                         <Col key={index} className='resultsCol'>
                             {result.poster_path != null ? <img className='moviePoster' src={`https://image.tmdb.org/t/p/w154${result.poster_path}`} alt='No poster available' /> :
@@ -103,8 +92,8 @@ const SearchBar = (props) => {
                         </Col>
                     )
                 })
-                    :
-                    <Col className='noResultsCol'>
+                    : 
+                    <Col className='noResultsCol paddingFix'>
                         <h1>Search for an available movie!</h1>
                     </Col>
                 }
@@ -114,7 +103,6 @@ const SearchBar = (props) => {
                 <Modal
                     id='createReviewModal'
                     isOpen={modalIsOpen}
-                    onAfterOpen={afterOpenModal}
                     onRequestClose={closeModal}
                     style={customStyles}
                     contentLabel="Movie Details"
@@ -161,9 +149,6 @@ const SearchBar = (props) => {
             }
         </Container>
     )
-
-
 }
-
 
 export default SearchBar
