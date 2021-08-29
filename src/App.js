@@ -2,7 +2,7 @@ import './App.css';
 import Auth from './authorization/Auth';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router} from 'react-router-dom';
-import SideBar from './home/Sidebar'
+import SideBar from './home/Sidebar';
 import WebFont from 'webfontloader';
 
 function App() {
@@ -25,16 +25,13 @@ function App() {
   const clearToken = () => {
     localStorage.clear();
     setSessionToken('');
-    console.log('Successfully logged out!')
+    console.log('Successfully logged out!');
   }
 
   const updateToken = (newToken) => { //updates a user token and saves it in local stoage
     localStorage.setItem('token', newToken);
     setSessionToken(newToken);
-    console.log(sessionToken);
 }
-  //put this function in login file
-  
 
   const protectedViews = () => {
     return (

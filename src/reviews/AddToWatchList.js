@@ -26,7 +26,7 @@ const AddWatchList = (props) => {
                 'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => res.json())
-        
+
         props.closeModal();
     }
     return (

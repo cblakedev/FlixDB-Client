@@ -8,19 +8,19 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Login from './Login';
 import Register from './Register';
-import '../App.css'
+import '../App.css';
+
 
 
 const AuthorizationTabs = (props) => {
     const [value, setValue] = useState(0);
 
-    
     const handleChange = (e, newValue) => { //handles the change between tabs by setting a new value to a tab
         setValue(newValue);
     };
 
-    return (        
-        <div id='mainAuthWrapper'> 
+    return (
+        <div id='mainAuthWrapper'>
             <div id='authWrapper'>
                 <AppBar position="static"> {/* the bar that controls the tabs at the top of the container */}
                     <Tabs className='authTabs' value={value} onChange={handleChange}>
