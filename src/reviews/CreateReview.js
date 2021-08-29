@@ -36,9 +36,7 @@ const CreateReview = (props) => {
                 'Authorization': `Bearer ${props.token}`
             })
         }).then((res) => res.json())
-
-        props.closeModal()
-            
+        props.closeModal()           
     }
 
     return (

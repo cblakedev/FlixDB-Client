@@ -76,21 +76,20 @@ const SideBar = (props) => {
     }
 
     const handleCollapse = () => {
-        
         let sidebarContent = document.querySelector('#sidebarContent')
 
         if (sideOpen) {
             sidebarContent.classList.add('toggleContent');
-            console.log('hide');
+            // console.log('hide');
             setSideOpen(false);
         } else {
             sidebarContent.classList.remove('toggleContent');
             setSideOpen(true);
-            console.log('show');
+            // console.log('show');
         }
     }
 
-  
+
 
     useEffect(() => {
         fetch(`${APIURL}user/userinfo`, {
@@ -133,7 +132,7 @@ const SideBar = (props) => {
                             <Label for='bioInput'>Profile Bio</Label>
                             <Input id="bioInput" label="Search field" type="textarea" />
                         </FormGroup> */}
-                        <Modal 
+                        <Modal
                             id='imgModal'
                             aria-labelledby="transition-modal-title"
                             aria-describedby="transition-modal-description"

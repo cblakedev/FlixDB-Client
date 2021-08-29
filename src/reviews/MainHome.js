@@ -54,7 +54,6 @@ const SearchBar = (props) => {
             .then((res) => res.json())
             .then((data) => {
                 setSearch(data)
-                console.log(data)
             })
     }
 
@@ -92,7 +91,7 @@ const SearchBar = (props) => {
                         </Col>
                     )
                 })
-                    : 
+                    :
                     <Col className='noResultsCol paddingFix'>
                         <h1>Search for an available movie!</h1>
                     </Col>

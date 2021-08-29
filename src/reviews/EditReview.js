@@ -14,7 +14,7 @@ const EditReviews = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         fetch(`${APIURL}reviews/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
@@ -43,7 +43,6 @@ const EditReviews = (props) => {
             })
         })
         console.log("Review deleted");
-
         props.closeModal();
     }
 
