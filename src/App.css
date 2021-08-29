@@ -445,12 +445,6 @@ label + .MuiInput-formControl {
     margin: auto; 
 }
 
-.makeStyles-paper-8 {
-    padding: 10px !important;
-    border-radius: 5px;
-    border: 1px solid rgb(204, 204, 204) !important;
-    box-shadow: none !important;
-}
 
 .MuiBackdrop-root {
   background-color: rgba(255, 255, 255, 0.75) !important;
