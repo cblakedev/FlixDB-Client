@@ -48,7 +48,7 @@ const MyReviews = (props) => {
 
     return (
         <Container id='homeWrapper'>
-            <Row className='resultsWrapper g-0'>
+            <Row className='resultsWrapper myReviewContainer g-0'>
                 {value.length > 0 ? value.map((finished, index) => {
                     return (
                         <Col key={index} className='resultsCol'>

@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+html {
+  background-color: #222831;
+  --bs-body-bg: none !important;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -210,6 +215,7 @@ label + .MuiInput-formControl {
   color: white;
   box-shadow: 0 0 15px -2px #00FFF5;
   border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   transition: left .3s linear !important;
 }
 
@@ -363,6 +369,7 @@ label + .MuiInput-formControl {
 .modalPosterWrapper {
   max-width: 350px;
 }
+
 
 /* All User Reviews */
  .allReviewsWrapper {
@@ -561,6 +568,7 @@ label + .MuiInput-formControl {
   .headerBar h2 {
     padding-left: 40px;
   }
+
 }
 
 @media only screen and (max-width: 750px) {
