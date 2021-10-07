@@ -25,7 +25,6 @@ const MyReviews = (props) => {
         fetchMovie()
     })
 
-    // let userID = props.
     const fetchMovie = () => {
         fetch(`${APIURL}reviews/myreviews`, {
             method: 'GET',
@@ -63,8 +62,8 @@ const MyReviews = (props) => {
                     )
                 })
                     :
-                    <Col className='noResultsCol paddingFix'>
-                        <h1>You have no reviews.</h1>
+                    <Col className='noResultsCol'>
+                        <h2>You have no reviews.</h2>
                     </Col>
                 }
             </Row>
@@ -84,7 +83,7 @@ const MyReviews = (props) => {
                         <p>{selected.description}</p>
                     </div>
                     <EditReview review={selected.review} selected={selected} closeModal={closeModal} token={props.token} />
-                    <Button className="homepageButton" onClick={closeModal}>Close</Button>
+                    <Button className="closeModalButton" onClick={closeModal}>Close</Button>
                 </Modal>
             )}
         </Container>

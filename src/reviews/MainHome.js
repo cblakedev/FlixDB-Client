@@ -4,7 +4,6 @@ import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
 import CreateReview from './CreateReview';
 import env from "react-dotenv";
-import AddWatchList from './AddToWatchList';
 
 const customStyles = {
     content: {
@@ -92,8 +91,8 @@ const SearchBar = (props) => {
                     )
                 })
                     :
-                    <Col className='noResultsCol paddingFix'>
-                        <h1>Search for an available movie!</h1>
+                    <Col className='noResultsCol'>
+                        <h2>Search for an available movie!</h2>
                     </Col>
                 }
             </Row>
@@ -117,14 +116,7 @@ const SearchBar = (props) => {
                     <Row>
                         <Col>
                             <CreateReview selected={selected} closeModal={closeModal} token={props.token} />
-                        </Col>
-                    </Row>
-                    <Row id='btmModalBtns'>
-                        <Col>
-                            <AddWatchList selected={selected} closeModal={closeModal} token={props.token} />
-                        </Col>
-                        <Col className='closeModalBtn'>
-                            <Button className="homepageButton" onClick={closeModal}>Close</Button>
+                            <Button className="closeModalButton" onClick={closeModal}>Close</Button>
                         </Col>
                     </Row>
                 </Modal>

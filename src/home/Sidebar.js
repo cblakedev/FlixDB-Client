@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Button } from 'reactstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Switch, Link, Route } from 'react-router-dom'
+import { Row, Col, Button } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Switch, Link, Route } from 'react-router-dom';
 import { RiHomeWifiFill } from 'react-icons/ri';
 import { VscPreview, VscOpenPreview } from 'react-icons/vsc';
-import { FaListAlt } from 'react-icons/fa'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { MdModeEdit } from 'react-icons/md'
+import { FaListAlt } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdModeEdit } from 'react-icons/md';
 import MainHome from '../reviews/MainHome';
 import AllReviews from '../reviews/AllReviews';
 import MyReviews from '../reviews/MyReviews';
@@ -16,6 +16,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import APIURL from '../helpers/environment';
+import { RiMovie2Line } from 'react-icons/ri'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -81,12 +82,10 @@ const SideBar = (props) => {
 
         if (sideOpen) {
             sidebarContent.classList.add('toggleContent');
-            // console.log('hide');
             setSideOpen(false);
         } else {
             sidebarContent.classList.remove('toggleContent');
             setSideOpen(true);
-            // console.log('show');
         }
     }
 
@@ -99,7 +98,7 @@ const SideBar = (props) => {
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${props.token}`
             })
-        }).then((response) => response.json()//jsonify the data
+        }).then((response) => response.json()
         ).then((data) => {
             setImageURL(data.image)
         })
@@ -110,7 +109,7 @@ const SideBar = (props) => {
             <Row className='headerBar g-0'>
                 <Col>
                     <GiHamburgerMenu type='button' className='navIcon' onClick={handleCollapse} />
-                    <a href='/'><h2>Movie Reviews App</h2></a>
+                    <a href='/' className='headerTitle'><h2><RiMovie2Line /> FlixDB</h2></a>
                 </Col>
             </Row>
             <Row className='sidebarWrapper g-0'>
@@ -122,17 +121,11 @@ const SideBar = (props) => {
                                     <img className='mainAvatar' src={`/assets/noAvatar.png`} alt='User Avatar' />
                             }
 
-                            {/*  
-                            <div>User Bio</div> */}
-
                         </div>
                         <Button className='avatarEditBtn' type="button" onClick={handleOpen}>
                             <MdModeEdit /> Edit
                         </Button>
-                        {/* <FormGroup className='sidebarFormGroup'>
-                            <Label for='bioInput'>Profile Bio</Label>
-                            <Input id="bioInput" label="Search field" type="textarea" />
-                        </FormGroup> */}
+
                         <Modal
                             id='imgModal'
                             aria-labelledby="transition-modal-title"
@@ -149,7 +142,7 @@ const SideBar = (props) => {
                             <Fade in={open}>
                                 <div className={classes.paper}>
                                     <Row id='profileImgWrapper' >
-                                        <h1>Choose an Avatar</h1>
+                                        <h1>choose an avatar</h1>
                                         {imageData.images ?
                                             imageData.images.map((image, index) => {
                                                 return (
@@ -186,12 +179,6 @@ const SideBar = (props) => {
                     </Switch>
                 </div>
             </Row>
-
-
-
-            <div>
-
-            </div>
         </div>
     )
 }

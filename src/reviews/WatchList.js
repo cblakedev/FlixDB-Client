@@ -41,10 +41,6 @@ const WatchList = (props) => {
         setIsOpen(result);
     }
 
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-    }
-
     const closeModal = result => {
         setIsOpen(false);
     }
@@ -67,8 +63,8 @@ const WatchList = (props) => {
                     )
                 })
                     :
-                    <Col className='noResultsCol paddingFix'>
-                        <h1>You have no movies in your Watchlist.</h1>
+                    <Col className='noResultsCol'>
+                        <h2>You have no movies in your Watchlist.</h2>
                     </Col>
                 }
             </Row>
@@ -76,7 +72,6 @@ const WatchList = (props) => {
                 <Modal
                     id='watchListModal'
                     isOpen={modalIsOpen}
-                    onAfterOpen={afterOpenModal}
                     onRequestClose={closeModal}
                     style={customStyles}
                     contentLabel="Movie Details"
@@ -89,7 +84,7 @@ const WatchList = (props) => {
                         <p>{selected.description}</p>
                     </div>
                     <EditWatchlist selected={selected} closeModal={closeModal} token={props.token} />
-                    <Button className="homepageButton" onClick={closeModal}>Close</Button>
+                    <Button className="closeModalButton" onClick={closeModal}>Close</Button>
                 </Modal>
             )}
         </Container>

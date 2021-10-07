@@ -153,6 +153,10 @@ label + .MuiInput-formControl {
   width: 100%;
 }
 
+.headerTitle svg{
+  margin-bottom: 8px;
+}
+
 .navIcon {
   position: absolute;
   left: 7px;
@@ -184,6 +188,7 @@ label + .MuiInput-formControl {
   background-color: #393E46;
   color: white;
   z-index: 2;
+  box-shadow: 0 0 15px -3px #00FFF5;
 }
 
 .headerBar h2 {
@@ -207,15 +212,12 @@ label + .MuiInput-formControl {
   top: 0;
   max-width: 350px !important;
   height: 100vh;
-  padding-top: 75px !important;
+  padding-top: 85px !important;
   display: flex;
   flex-direction: column;
   padding: 5px;
   background-color: #393E46;
   color: white;
-  box-shadow: 0 0 15px -2px #00FFF5;
-  border-right: 1px solid grey;
-  border-bottom: 1px solid grey;
   transition: left .3s linear !important;
 }
 
@@ -233,6 +235,7 @@ label + .MuiInput-formControl {
 }
 
 .userOperations {
+  margin: auto;
   position: relative;
   height: 60% !important;
   flex: none !important;
@@ -256,8 +259,8 @@ label + .MuiInput-formControl {
 }
 
 .operationsList {
-  padding: 0 0 0 75px;
   margin: 0;
+  padding: 0;
   text-align: left;
   font-size: 17px !important;
 }
@@ -338,8 +341,8 @@ label + .MuiInput-formControl {
   justify-content: center;
 }
 
-.noResultsCol h1 {
-  font-size: 4rem;
+.noResultsCol h2 {
+  font-size: 3rem;
 }
 
 .resultsCol h5 {
@@ -373,6 +376,10 @@ label + .MuiInput-formControl {
 
 .modalPosterWrapper {
   max-width: 350px;
+}
+
+.closeModalButton {
+  margin: 5px;
 }
 
 
@@ -419,8 +426,8 @@ label + .MuiInput-formControl {
   justify-content: center !important;
  }
 
- .noResultsWrapper h1{
-  font-size: 4rem;
+ .noResultsWrapper h2{
+  font-size: 3rem;
  }
 
  .searchedMoviePoster {
@@ -513,16 +520,8 @@ label + .MuiInput-formControl {
   text-align: center;
 }
 
-.closeModalBtn {
-  text-align: center;
-}
-
 #btmModalBtns {
   padding-top: 15px !important;
-}
-
-#submitReviewButton {
-  margin-top: 10px !important;
 }
 
 /* Edit Review */
@@ -534,7 +533,7 @@ label + .MuiInput-formControl {
 }
 
 #submitReviewButton {
-  margin-bottom: 7px !important;
+  margin: 5px 5px 5px 5px;
 }
 
 .myReviewDescription {
@@ -554,20 +553,21 @@ label + .MuiInput-formControl {
 }
 
 #submitDeleteButton {
-  margin-bottom: 7px !important;
+  margin: 5px;
 }
 
 .watchlistDescription p{
   text-align: left;
 }
 
+#submitWLButton {
+  margin: 5px;
+}
+
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 400px) {
-  .headerBar h2 {
-    padding-left: 40px;
-  }
-
+@media only screen and (max-width: 320px) {
+  
 }
 
 @media only screen and (max-width: 750px) {
@@ -595,9 +595,6 @@ label + .MuiInput-formControl {
     left: 0;
   }
 
-  .paddingFix {
-    padding: 100px 0 28em 0 !important;
-  }
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 1001px) {

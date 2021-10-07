@@ -34,6 +34,7 @@ const EditReviews = (props) => {
     }
 
     const handleDelete = (e) => {
+        e.preventDefault();
 
         fetch(`${APIURL}reviews/delete/${id}`, {
             method: 'DELETE',
@@ -50,11 +51,10 @@ const EditReviews = (props) => {
         <div>
             <Form className="reviewForm" onSubmit={handleSubmit}>
                 <Input required id="user-review" value={userReview} label="Edit Review" type="textarea" onChange={(e) => setUserReview(e.target.value)} />
-                <Button className="homepageButton" id="submitReviewButton" type="submit" >Update Review</Button>
+                <Button id="submitReviewButton" type="submit" >Update Review</Button>
+                <Button id="submitDeleteButton" onClick={(e) => handleDelete(e)}>Delete Review</Button>
             </Form>
-            <Form className="deleteForm" onSubmit={handleDelete}>
-                <Button className="homepageButton" id="submitDeleteButton" type="submit" >Delete Review</Button>
-            </Form>
+
         </div>
     );
 }

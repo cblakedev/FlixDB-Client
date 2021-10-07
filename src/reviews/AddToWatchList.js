@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    Button,
-    Form
-} from 'reactstrap';
+import { Button } from 'reactstrap';
 import APIURL from '../helpers/environment';
 
 const AddWatchList = (props) => {
@@ -30,11 +27,9 @@ const AddWatchList = (props) => {
         props.closeModal();
     }
     return (
-        <div>
-            <Form className="reviewForm" onSubmit={handleSubmit}>
-                <Button className="homepageButton" id="submitWLButton" type="submit" >Add to Watchlist</Button>
-            </Form>
-        </div>
+        <>
+            <Button id="submitWLButton" onClick={(e) => handleSubmit(e)} type="submit" >Add to Watchlist</Button>
+        </>
     );
 }
 
