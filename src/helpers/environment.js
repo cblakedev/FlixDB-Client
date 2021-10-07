@@ -7,7 +7,7 @@ switch (window.location.hostname) {
         break;
 
     default :
-        APIURL = 'https://cb-movie-reviews-server.herokuapp.com/'
+        APIURL = 'https://flixdb-server.herokuapp.com/'
       
 }
 
