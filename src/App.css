@@ -184,7 +184,6 @@ label + .MuiInput-formControl {
   background-color: #393E46;
   color: white;
   z-index: 2;
-  box-shadow: 0 0 15px -2px #00FFF5;
 }
 
 .headerBar h2 {
@@ -208,12 +207,15 @@ label + .MuiInput-formControl {
   top: 0;
   max-width: 350px !important;
   height: 100vh;
-  padding-top: 85px !important;
+  padding-top: 75px !important;
   display: flex;
   flex-direction: column;
   padding: 5px;
   background-color: #393E46;
   color: white;
+  box-shadow: 0 0 15px -2px #00FFF5;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   transition: left .3s linear !important;
 }
 
@@ -235,7 +237,6 @@ label + .MuiInput-formControl {
   height: 60% !important;
   flex: none !important;
   padding: 0 !important;
-  margin: auto;
 }
 
 .userOperations Button {
@@ -255,6 +256,7 @@ label + .MuiInput-formControl {
 }
 
 .operationsList {
+  padding: 0 0 0 75px;
   margin: 0;
   text-align: left;
   font-size: 17px !important;
@@ -286,10 +288,6 @@ label + .MuiInput-formControl {
  #homeWrapper {
   height: 100%;
   padding: 50px 0;
-}
-
-.headerTitle svg {
-  margin-bottom: 8px;
 }
 
 .searchCol {
@@ -340,8 +338,8 @@ label + .MuiInput-formControl {
   justify-content: center;
 }
 
-.noResultsCol h2 {
-  font-size: 3rem;
+.noResultsCol h1 {
+  font-size: 4rem;
 }
 
 .resultsCol h5 {
@@ -421,8 +419,8 @@ label + .MuiInput-formControl {
   justify-content: center !important;
  }
 
- .noResultsWrapper h2{
-  font-size: 3rem;
+ .noResultsWrapper h1{
+  font-size: 4rem;
  }
 
  .searchedMoviePoster {
@@ -556,20 +554,19 @@ label + .MuiInput-formControl {
 }
 
 #submitDeleteButton {
-  margin: 10px 0 7px 10px !important;
+  margin-bottom: 7px !important;
 }
 
 .watchlistDescription p{
   text-align: left;
 }
 
-#submitWLButton {
-  margin: 10px 0 7px 10px !important;
-}
-
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 400px) {
+  .headerBar h2 {
+    padding-left: 40px;
+  }
 
 }
 
@@ -598,6 +595,9 @@ label + .MuiInput-formControl {
     left: 0;
   }
 
+  .paddingFix {
+    padding: 100px 0 28em 0 !important;
+  }
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 1001px) {

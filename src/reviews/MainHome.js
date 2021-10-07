@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
 import CreateReview from './CreateReview';
 import env from "react-dotenv";
+import AddWatchList from './AddToWatchList';
 
 const customStyles = {
     content: {
@@ -119,6 +120,9 @@ const SearchBar = (props) => {
                         </Col>
                     </Row>
                     <Row id='btmModalBtns'>
+                        <Col>
+                            <AddWatchList selected={selected} closeModal={closeModal} token={props.token} />
+                        </Col>
                         <Col className='closeModalBtn'>
                             <Button className="homepageButton" onClick={closeModal}>Close</Button>
                         </Col>

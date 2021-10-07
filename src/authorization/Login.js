@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Button from '@material-ui/core/Button';
@@ -10,6 +10,7 @@ import {
     Container,
 } from 'reactstrap';
 import APIURL from '../helpers/environment';
+import { Spinner } from 'reactstrap';
 
 const RegisterSchema = Yup.object().shape({ //yup schema used for field validation
     username: Yup.string()
@@ -19,6 +20,7 @@ const RegisterSchema = Yup.object().shape({ //yup schema used for field validati
 });
 
 const Login = (props) => {
+    const [isLoading, setIsLoading] = useState(true);
 
     const formik = useFormik({  //uses formik library that will handle form validation
         initialValues: { //initiates initial values for username and password
