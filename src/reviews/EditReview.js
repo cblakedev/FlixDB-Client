@@ -51,9 +51,7 @@ const EditReviews = (props) => {
             <Form className="reviewForm" onSubmit={handleSubmit}>
                 <Input required id="user-review" value={userReview} label="Edit Review" type="textarea" onChange={(e) => setUserReview(e.target.value)} />
                 <Button className="homepageButton" id="submitReviewButton" type="submit" >Update Review</Button>
-            </Form>
-            <Form className="deleteForm" onSubmit={handleDelete}>
-                <Button className="homepageButton" id="submitDeleteButton" type="submit" >Delete Review</Button>
+                <Button onClick={() => handleDelete()} id="submitDeleteButton" type="submit" >Delete Review</Button>
             </Form>
         </div>
     );

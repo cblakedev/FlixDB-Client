@@ -60,7 +60,7 @@ const AllReviews = (props) => {
                 :
                 <Row className=' g-0'>
                     <Col className='noResultsWrapper paddingFix'>
-                        <h1> Search for a movie and see what people are saying!</h1>
+                        <h2> Search for a movie and see what people are saying!</h2>
                     </Col>
                 </Row>
             }

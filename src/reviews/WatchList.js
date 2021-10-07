@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap';
 import { Button } from 'reactstrap';
 import Modal from 'react-modal';
 import EditWatchlist from './EditWatchList';
@@ -42,7 +42,7 @@ const WatchList = (props) => {
     }
 
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
+
     }
 
     const closeModal = result => {
@@ -68,10 +68,11 @@ const WatchList = (props) => {
                 })
                     :
                     <Col className='noResultsCol paddingFix'>
-                        <h1>You have no movies in your Watchlist.</h1>
+                        <h2>You have no movies in your Watchlist.</h2>
                     </Col>
                 }
             </Row>
+
             {!!selected && (
                 <Modal
                     id='watchListModal'

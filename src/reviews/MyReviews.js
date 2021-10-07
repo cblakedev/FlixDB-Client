@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap';
 import { Button } from 'reactstrap';
 import Modal from 'react-modal';
 import EditReview from './EditReview';
@@ -25,7 +25,6 @@ const MyReviews = (props) => {
         fetchMovie()
     })
 
-    // let userID = props.
     const fetchMovie = () => {
         fetch(`${APIURL}reviews/myreviews`, {
             method: 'GET',
@@ -64,7 +63,7 @@ const MyReviews = (props) => {
                 })
                     :
                     <Col className='noResultsCol paddingFix'>
-                        <h1>You have no reviews.</h1>
+                        <h2>You have no reviews</h2>
                     </Col>
                 }
             </Row>

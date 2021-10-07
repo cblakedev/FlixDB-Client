@@ -16,6 +16,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import APIURL from '../helpers/environment';
+import {RiMovie2Line} from 'react-icons/ri'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -81,12 +82,12 @@ const SideBar = (props) => {
 
         if (sideOpen) {
             sidebarContent.classList.add('toggleContent');
-            // console.log('hide');
+            
             setSideOpen(false);
         } else {
             sidebarContent.classList.remove('toggleContent');
             setSideOpen(true);
-            // console.log('show');
+            
         }
     }
 
@@ -99,7 +100,7 @@ const SideBar = (props) => {
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${props.token}`
             })
-        }).then((response) => response.json()//jsonify the data
+        }).then((response) => response.json()
         ).then((data) => {
             setImageURL(data.image)
         })
@@ -110,7 +111,7 @@ const SideBar = (props) => {
             <Row className='headerBar g-0'>
                 <Col>
                     <GiHamburgerMenu type='button' className='navIcon' onClick={handleCollapse} />
-                    <a href='/'><h2>Movie Reviews App</h2></a>
+                    <a href='/' className='headerTitle'><h2><RiMovie2Line/>FlixDB</h2></a>
                 </Col>
             </Row>
             <Row className='sidebarWrapper g-0'>
@@ -122,17 +123,11 @@ const SideBar = (props) => {
                                     <img className='mainAvatar' src={`/assets/noAvatar.png`} alt='User Avatar' />
                             }
 
-                            {/*  
-                            <div>User Bio</div> */}
-
                         </div>
                         <Button className='avatarEditBtn' type="button" onClick={handleOpen}>
                             <MdModeEdit /> Edit
                         </Button>
-                        {/* <FormGroup className='sidebarFormGroup'>
-                            <Label for='bioInput'>Profile Bio</Label>
-                            <Input id="bioInput" label="Search field" type="textarea" />
-                        </FormGroup> */}
+
                         <Modal
                             id='imgModal'
                             aria-labelledby="transition-modal-title"
