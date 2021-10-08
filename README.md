@@ -7,7 +7,7 @@ save movie information and add it to their watchlist. This is a responsive web a
 ## Deployed App
 - https://flixdb-client.herokuapp.com/
 
-### Demo Login(Tenant/Admin)
+### Demo Login
 The demo login below is used to demo the project without having to registe.
 - **username:** 1@test.com
 - **password:** Password1!
