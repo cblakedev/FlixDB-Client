@@ -15,11 +15,11 @@ const RegisterSchema = Yup.object().shape({ //yup schema used for field validati
     username: Yup.string()
         .min(4, 'Username is too short: Min 4 characters.')
         .max(20, 'Username is too long: Max 20 characters.')
-        .matches(/^(?=.\S+$)(?=.*[@#$%^!*&()+=_-]).*$/, 'Username requires at least one special character.')
         .required('Required'),
     password: Yup.string()
-        .min(5, 'Password is too short: Min 5 characters.')
+        .min(5, 'Password is too short: Min 6 characters.')
         .max(20, 'Password is too long: Max 20 characters.')
+        .matches(/((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/, 'Requires at least 6 characters, one uppercase, one lowercase, one number, and one special character.')
         .required('Required'),
     passwordConfirmation: Yup.string()
         .test('passwords-match', 'Passwords must match', function (value) {

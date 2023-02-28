@@ -36,7 +36,7 @@ html {
 
 /* AUTH STYLES */
 #mainAuthWrapper {
-  background-image: linear-gradient(to bottom right, #000000e1, #11b6c2ea), url('https://karmanhealth-karmanhealthcare.netdna-ssl.com/wp-content/uploads/2017/12/902.jpg');
+  background-image: linear-gradient(to bottom right, #000000e1, #11b6c2ea);
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;

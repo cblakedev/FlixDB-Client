@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Input } from 'reactstrap';
 import Modal from 'react-modal';
 import CreateReview from './CreateReview';
 import env from "react-dotenv";
+Modal.setAppElement('#root');
 
 const customStyles = {
     content: {
@@ -21,7 +22,7 @@ const SearchBar = (props) => {
     const [search, setSearch] = useState({});
     const [pageNumber, setPageNumber] = useState(1);
     const [searchPageNumber, setSearchPageNumber] = useState(1);
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(false);
     const isMounted = useRef(false);
     const [modalIsOpen, setIsOpen] = useState(false);
 

@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import Modal from 'react-modal';
 import EditReview from './EditReview';
 import APIURL from '../helpers/environment';
+Modal.setAppElement('#root');
 
 const customStyles = {
     content: {
